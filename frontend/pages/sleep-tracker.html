@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="sleep-tracker.js"></script>
+  <link rel="stylesheet" href="./sleep-tracker.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Tracker</title>
+</head>
+
+<body>
+  <h3>How Did You Sleep?</h3>
+  <form method="post" id="sleep-form">
+
+    <!--user is inputting data on how many hours slept -->
+    <label for="calendar"> Calendar </label>
+    <input type="date" name="calendar" id="date-input">
+    
+    <fieldset>
+      <legend>How many hours did you sleep?</legend>
+      <label for="1-3"> 1-3 </label>
+      <input checked type="radio" name="hours-slept" id="1-3" value="1-3">
+      <label for="4-7"> 4-7 </label>
+      <input type="radio" name="hours-slept" id="4-7" value="4-7">
+      <label for="8-10"> 8-10 </label>
+      <input type="radio" name="hours-slept" id="8-10" value="8-10">
+      <label for="10+"> 10+ </label>
+      <input type="radio" name="hours-slept" id="10+" value="10+">
+      <!-- # 4 radios - all have name attribute set to hours-slept & each will have input values, e.g. 1-3 hours-slept  -->
+      <!-- # https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio -->
+    </fieldset>
+
+    <fieldset>
+      <!-- legend this is basically creating a header -->
+      <legend>How well did you sleep?</legend>
+      <!-- labels are creating a label on the likert scale -- see relative path -->
+      <label for="very bad"> very bad </label>
+      <input checked type="radio" name="sleep-quality" id="" value="very bad">
+      <label for="bad"> bad </label>
+      <input type="radio" name="sleep-quality" id="" value="bad">
+      <label for="okay"> okay </label>
+      <input type="radio" name="sleep-quality" id="" value="okay">
+      <label for="good"> good </label>
+      <input type="radio" name="sleep-quality" id="" value="good">
+      <label for="very good"> very good </label>
+      <input type="radio" name="sleep-quality" id="" value="very good">
+    </fieldset>
+    <!-- forgot to put a central point on the wireframe, but should be five options to include neutral -->
+
+    <input class="btn" type="submit" value="Save">
+
+
+  </form>
+
+</body>
+
+</html>
