@@ -18,3 +18,6 @@ db_path = 'CFGfinalprojectdatabase.db' # assigns the string value to CFG final p
 @app.route('/')  # navigates to the root URL of the application called homepage
 def homepage():
     return render_template('moodtrackerhomepage.html') # this render_template will look for a file and return HTML page
+
+
+# right ladies just a note for myself - we need to make @app.routes for the likes of create account, logins, daily record page, calander overview page etc
