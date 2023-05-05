@@ -13,6 +13,11 @@ import sqlite3
 # python library that allows you to store and retrieve data from an SQL database.
 
 app = Flask(__name__)  # creates a new Flask application
+    @app.route('/')
+    def index():
+     return 'Web App with Python Flask!'
+    app.run(host='0.0.0.0', port=81)
+
 db_path = 'CFGfinalprojectdatabase.db' # assigns the string value to CFG final project DB
 
 @app.route('/')  # navigates to the root URL of the application called homepage
