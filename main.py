@@ -1,20 +1,24 @@
 from flask import Flask, request, flash, url_for, redirect, render_template
+# SQLAlchemy is how we link to the db
 from flask_sqlalchemy import SQLAlchemy
 # this is what we will use to capture data entered on the website
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
+# validators will be useful for making sure valid input coming from the website
 from wtforms.validators import Email, DataRequired
 
-
+# creating an instance of the app
 app = Flask(__name__)
+# You will need to change the password here if your MySQL password is different
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:password@localhost/CFGFinalProject"
 app.config['SECRET_KEY'] = "random string"
-
+# creating a db accessible via the app
 db = SQLAlchemy(app)
 
 
-# This should be in separate models.py file
-# Models - tables for the db
+# This should ideally be in separate models.py file but is ok here for now
+
+# Models - table structure for the db
 
 # UserInfo table
 class UserInfo(db.Model):
@@ -24,15 +28,9 @@ class UserInfo(db.Model):
     email = db.Column(db.String(120), nullable=False)
 
 
-def __init__(self, forename, surname, email):
-   self.forename = forename
-   self.surname = surname
-   self.email = email
+# This should ideally be in separate create.py file but ok here for now
 
-
-
-# This should be in separate create.py file
-# Values for the table
+# Values for the table to be inserted
 #
 # UserInfo table
 # each row of the table
@@ -48,9 +46,9 @@ users = [user_1, user_2, user_3, user_4, user_5]
 
 
 
-# This should be in separate forms.py file
-# forms
+# This should be in separate forms.py file but ok here for now
 
+# forms
 
 # example of how these work
 class BasicRegistrationForm(FlaskForm):
@@ -60,8 +58,7 @@ class BasicRegistrationForm(FlaskForm):
     submit = SubmitField('Register')
 
 
-
-# This should be in separate routes.py file
+# This should be in separate routes.py file but ok here for now
 # routes
 
 @app.route('/home', methods=['GET', 'POST'])
@@ -80,18 +77,17 @@ def home():
             user = UserInfo(forename=forename, surname=surname, email=email)
             db.session.add(user)
             db.session.commit()
+            # gives you a message if it works
             flash(f'Success! {form.email.data} is now signed up for an account', 'success')
             return render_template('home.html', form=form, message=error, title='home')
     return render_template('home.html', form=form, message=error, title='home')
+
 
 # getting list of current users
 @app.route('/user_list', methods=['GET'])
 def user_list():
     error = ""
     users = UserInfo.query
-    # if len(users) == 0:
-    #     error = "There are no people to display"
-    #     print(users)
     return render_template('user_list.html', users=users, message=error)
 
 
