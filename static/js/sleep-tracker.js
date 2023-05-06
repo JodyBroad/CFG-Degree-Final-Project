@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const hoursSleptInput = document.querySelector('input[name="hours-slept"]:checked');
     const sleepQualitytInput = document.querySelector('input[name="sleep-quality"]:checked');
     
+    const today = new Date();
+    dateInput.valueAsDate = today;
+    dateInput.max = today.toISOString().split('T')[0];
+    // setting as today's date
+    // https://stackoverflow.com/questions/6982692/how-to-set-input-type-dates-default-value-to-today
+    // https://stackoverflow.com/questions/32378590/set-date-input-fields-max-date-to-today
+
+
     const saveEntry = async (event) => {
         event.preventDefault();
         const sleepData = {
@@ -12,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
             hoursSlept: hoursSleptInput.value,
         };
         console.log(sleepData);
-        // to do - integrate with flask
-        const response = await fetch({
-            url: 'http://localhost:5000/api/sleep-tracker/log-sleep',
+        // to do - error handling
+        await fetch('/api/sleep-tracker/log-sleep', {
+            headers: {'Content-Type': 'application/json'},
             method: 'POST', 
-            body: sleepData,
+            body: JSON.stringify(sleepData),
         });
     };
     

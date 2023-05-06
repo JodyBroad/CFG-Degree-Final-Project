@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-  <script src="sleep-tracker.js"></script>
-  <link rel="stylesheet" href="./sleep-tracker.css">
+  <script src={{ url_for('static', filename='js/sleep-tracker.js') }}></script>
+  <link rel="stylesheet" href={{ url_for('static', filename='css/sleep-tracker.css') }}>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +12,11 @@
 
 <body>
   <h3>How Did You Sleep?</h3>
-  <form method="post" id="sleep-form">
+  <form id="sleep-form" method="post">
 
     <!--user is inputting data on how many hours slept -->
     <label for="calendar"> Calendar </label>
-    <input type="date" name="calendar" id="date-input">
+    <input type="date" required name="calendar" id="date-input">
     
     <fieldset>
       <legend>How many hours did you sleep?</legend>
@@ -47,8 +47,7 @@
       <label for="very good"> very good </label>
       <input type="radio" name="sleep-quality" id="" value="very good">
     </fieldset>
-    <!-- forgot to put a central point on the wireframe, but should be five options to include neutral -->
-
+ 
     <input class="btn" type="submit" value="Save">
 
 
