@@ -30,6 +30,36 @@ class UserInfo(db.Model):
     email = db.Column(db.String(120), nullable=False)
 
 
+class DailyRecord(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    recordDate = db.Column(db.Date, nullable=False)
+    mood_id = db.Column(db.Integer, foreign_key=True)
+    sleep_id = db.Column(db.Integer, foreign_key=True)
+    water_intake = db.Column(db.Integer, nullable=True)
+    steps_taken = db.Integer(db.Column, nullable=True)
+
+
+class MoodStatus(db.Model):
+    mood_id = db.Column(db.Integer, primary_key=True)
+    mood_status = db.Column(db.String(50), nullable=False)
+
+
+class SleepRecord(db.Model):
+    sleep_id = db.Column(db.Integer, primary_key=True)
+    sleepDuration_id = db.Column(db.Integer, foreign_key=True)
+    sleepQuality_id = db.Column(db.Integer, foreign_key=True)
+
+
+class SleepDuration(db.Model):
+    sleepDuration_id = db.Column(db.Integer, primary_key=True)
+    duration = db.Column(db.String(50), nullable=False)
+
+
+class SleepQuality(db.Model):
+    sleepQuality_id = db.Column(db.Integer, primary_key=True)
+    quality = db.Column(db.String(50), nullable=False)
+
+
 # This should ideally be in separate create.py file but ok here for now
 
 # Values for the table to be inserted
