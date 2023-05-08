@@ -1,0 +1,35 @@
+<!--This is taking the info from layout.html and then adding the below to it-->
+{% extends "layout.html" %}
+{% block body_content %}
+
+
+    <!--tracking entry -->
+        <div class="tracking-entry">
+          <h4>Tracking</h4>
+
+            <div class='form'>
+                    <form method='POST' action=''>
+                        <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
+                        {{ form.hidden_tag() }}
+                        {{ form.mood_id.label }} {{ form.mood_id }}
+                        {{ form.mood_diary.label }} {{ form.mood_diary }}
+                        <br>
+                        {{ form.sleep_duration_id.label }} {{ form.sleep_duration_id }}
+                        {{ form.sleep_quality_id.label }} {{ form.sleep_quality_id }}
+                        <br>
+                        {{ form.water_intake.label }} {{ form.water_intake }}
+                        <br>
+                        {{ form.steps_taken.label }} {{ form.steps_taken }}
+
+                        {{ form.submit }}
+                    {{ message }}
+                    </form>
+        </div>
+        </div>
+
+
+
+
+
+
+{% endblock %}
