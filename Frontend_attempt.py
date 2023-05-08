@@ -35,16 +35,8 @@ def create_account():
 
     else:
         user_id = len(user_database) + 1
-        user_database[username] = {'id': user_id, 'password': password}
+        user_database[username] = {'id': user_id, 'password' = password}
         return print(f'Account created for {username}, the ID is {user_id}')
-
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-
-        if username in user_database and user_database[username]['password']==password:
 
 
 # right ladies just a note for myself - we need to make @app.routes for the likes of create account, logins, daily record page, calander overview page etc
