@@ -24,19 +24,5 @@ db_path = 'CFGfinalprojectdatabase.db' # assigns the string value to CFG final p
 def homepage():
     return render_template('moodtrackerhomepage.html') # this render_template will look for a file and return HTML page
 
-user_database = {}
-@app.route('/create_account', methods=['POST'])
-def create_account():
-    username = request.form['username']
-    password = request.form['password']
-
-    if username in user_database:
-        return print('Username already taken!')
-
-    else:
-        user_id = len(user_database) + 1
-        user_database[username] = {'id': user_id, 'password' = password}
-        return print(f'Account created for {username}, the ID is {user_id}')
-
 
 # right ladies just a note for myself - we need to make @app.routes for the likes of create account, logins, daily record page, calander overview page etc
