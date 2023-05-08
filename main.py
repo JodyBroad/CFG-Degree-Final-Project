@@ -175,7 +175,7 @@ if __name__ == '__main__':
         db.drop_all()
         # creates all the tables
         db.create_all()
-        # use this to add the list of users all at once (will add more for other tables)
+        # use this to populate the tables with all the data (will add more for other tables)
         db.session.add_all(users)
         db.session.add_all(moods)
         db.session.add_all(sleeps)
