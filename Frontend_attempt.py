@@ -15,6 +15,3 @@ import sqlite3
 app = Flask(__name__)  # creates a new Flask application
 db_path = 'CFGfinalprojectdatabase.db' # assigns the string value to CFG final project DB
 
-@app.route('/')  # navigates to the root URL of the application called homepage
-def homepage():
-    return render_template('moodtrackerhomepage.html') # this render_template will look for a file and return HTML page
