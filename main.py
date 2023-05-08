@@ -28,6 +28,7 @@ class UserInfo(db.Model):
     forename = db.Column(db.String(50), nullable=False)
     surname = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), nullable=False)
+    password = db.Column(db.String(15), nullable=False)
     # not field in table but relationship between userInfo and DailyRecord
     user_info = db.relationship('DailyRecord', backref='user_info')
 
@@ -76,11 +77,11 @@ class DailyRecord(db.Model):
 
 # UserInfo table
 # each row of the table
-user_1 = UserInfo(forename='Jody', surname='Broad', email='Jody@email.com')
-user_2 = UserInfo(forename='Melissa', surname='Long', email='Melissa@email.com')
-user_3 = UserInfo(forename='Rada', surname='Kanchananupradit', email='Rada@email.com')
-user_4 = UserInfo(forename='Khadija', surname='Warsama', email='Khadija@email.com')
-user_5 = UserInfo(forename='Georgie', surname='Annett', email='Georgie@email.com')
+user_1 = UserInfo(forename='Jody', surname='Broad', email='Jody@email.com', password='password1')
+user_2 = UserInfo(forename='Melissa', surname='Long', email='Melissa@email.com', password='password2')
+user_3 = UserInfo(forename='Rada', surname='Kanchananupradit', email='Rada@email.com', password='password3')
+user_4 = UserInfo(forename='Khadija', surname='Warsama', email='Khadija@email.com', password='password4')
+user_5 = UserInfo(forename='Georgie', surname='Annett', email='Georgie@email.com', password='password5')
 # save the rows to a list
 users = [user_1, user_2, user_3, user_4, user_5]
 
@@ -132,6 +133,7 @@ class BasicRegistrationForm(FlaskForm):
     forename = StringField('First Name')
     surname = StringField('Last Name')
     email = StringField('Email', validators=[DataRequired(), Email(message="Please supply a valid email")])
+    password = StringField('Password', validators=[DataRequired()])
     submit = SubmitField('Register')
 
 
@@ -148,10 +150,11 @@ def home():
         forename = form.forename.data
         surname = form.surname.data
         email = form.email.data
+        password = form.password.data
         if len(email) == 0:
             error = "Please supply email address"
         else:
-            user = UserInfo(forename=forename, surname=surname, email=email)
+            user = UserInfo(forename=forename, surname=surname, email=email, password=password)
             db.session.add(user)
             db.session.commit()
             # gives you a message if it works
