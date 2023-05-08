@@ -101,7 +101,7 @@ moods = [mood_1, mood_2, mood_3, mood_4, mood_5, mood_6]
 sleep_1 = SleepDuration(duration='1-5 hours')
 sleep_2 = SleepDuration(duration='5-8 hours')
 sleep_3 = SleepDuration(duration='8-10 hours')
-sleep_4 = SleepDuration(duration='11+ hours')
+sleep_4 = SleepDuration(duration='10+ hours')
 
 # save the rows to a list
 sleeps = [sleep_1, sleep_2, sleep_3, sleep_4]
