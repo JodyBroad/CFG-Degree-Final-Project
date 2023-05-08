@@ -124,9 +124,13 @@ daily_record_2 = DailyRecord(user_id=2, record_date='2023-05-07', mood_id=3,
                              sleep_duration_id=3, sleep_quality_id=3, water_intake=1800, steps_taken=12000)
 daily_record_3 = DailyRecord(user_id=3, record_date='2023-05-08', mood_id=5, mood_diary='So very tired',
                              sleep_duration_id=2, sleep_quality_id=3, water_intake=2500, steps_taken=11500)
+daily_record_4 = DailyRecord(user_id=3, record_date='2023-05-07', mood_id=4, mood_diary='This is fine',
+                             sleep_duration_id=5, sleep_quality_id=2, water_intake=2000, steps_taken=11500)
+daily_record_5 = DailyRecord(user_id=3, record_date='2023-05-06', mood_id=3, sleep_duration_id=4, sleep_quality_id=2,
+                             water_intake=1500, steps_taken=1000)
 
 # save the rows to a list
-records = [daily_record_1, daily_record_2, daily_record_3]
+records = [daily_record_1, daily_record_2, daily_record_3, daily_record_4, daily_record_5]
 
 
 # This should be in separate forms.py file but ok here for now
@@ -223,6 +227,16 @@ def user_list():
     users = UserInfo.query
     return render_template('user_list.html', users=users, message=error)
 
+
+# getting a list of all users daily records
+@app.route('/user_data', methods=['GET'])
+def user_data():
+    error = ""
+    user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from(UserInfo)\
+        .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).all()
+    headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
+                'Sleep Quality', 'Water intake', 'Steps taken')
+    return render_template('user_data.html', user_data=user_data, headings=headings, message=error)
 
 if __name__ == '__main__':
     with app.app_context():
