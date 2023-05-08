@@ -70,12 +70,10 @@ class DailyRecord(db.Model):
     steps_taken = db.Column(db.Integer, nullable=True)
 
 
-
-
 # This should ideally be in separate create.py file but ok here for now
 
 # Values for the table to be inserted
-#
+
 # UserInfo table
 # each row of the table
 user_1 = UserInfo(forename='Jody', surname='Broad', email='Jody@email.com')
@@ -123,6 +121,7 @@ daily_record_3 = DailyRecord(user_id=3, record_date='2023-05-08', mood_id=4, moo
 
 # save the rows to a list
 records = [daily_record_1, daily_record_2, daily_record_3]
+
 
 # This should be in separate forms.py file but ok here for now
 
