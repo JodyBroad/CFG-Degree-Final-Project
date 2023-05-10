@@ -1,4 +1,4 @@
-import jsonify, requests
+import requests
 
 # dictionary of WMO Weather interpretation codes (WW)
 weather_dict = {
@@ -30,6 +30,14 @@ weather_dict = {
     99: "thunderstorm with heavy hail"
 }
 
+sunny = [0, 1]
+cloudy = [2, 3]
+fog = [45, 48]
+drizzle = [51, 53, 55, 56, 57]
+rain = [61, 63, 65, 80, 81, 82]
+snow = [71, 73, 75, 77, 85, 86]
+storm = [95, 96, 99]
+
 
 # using the weather API
 
@@ -50,7 +58,27 @@ if response.status_code == 200:
     # getting the weather-code to tell us the weather condition on that day
     weathercode = daily['weathercode'][0]
     # print(weathercode)
-    print(weather_dict[weathercode])
+    # print(weather_dict[weathercode])
+
+    # get image URL based on weathercode
+    if weathercode in sunny:
+        image_url = "https://source.unsplash.com/Fpqx6GGXfXs"
+        print(image_url)
+    elif weathercode in cloudy:
+        image_url = "https://source.unsplash.com/0juC5JIhPks"
+        print(image_url)
+    elif weathercode in fog:
+        image_url = "https://source.unsplash.com/TFyi0QOx08c"
+        print(image_url)
+    elif weathercode in drizzle or weathercode in rain:
+        image_url = "https://source.unsplash.com/8lQyd8wEAzI"
+        print(image_url)
+    elif weathercode in snow:
+        image_url = "https://source.unsplash.com/OoQKL4cLZuc"
+        print(image_url)
+    else:
+        image_url = "https://source.unsplash.com/lVDnLUACI18"
+        print(image_url)
 
 else:
     # showing the error message
