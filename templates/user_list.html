@@ -16,5 +16,20 @@
         </div>
     </section>
 </body>
+<div>
+{% for user in users %}
+   <p>{{user.id}} {{user.forename}} {{user.surname}} {{user.email}}</p>
+{% endfor %}
+    <br>
+    {{ message }}
+</div>
+
+<div>
+    <p><a href="{{ url_for('home') }}">Home</a></p>
+    <p><a href="{{ url_for('tracking') }}">Add tracking data (will default to today's date and User_ID=1 for now)</a></p>
+    <p><a href="{{ url_for('user_data') }}">View all current daily records</a></p>
+    <p><a href="{{ url_for('user_list') }}">View all current users</a></p>
+</div>
+
 
 {% endblock %}
