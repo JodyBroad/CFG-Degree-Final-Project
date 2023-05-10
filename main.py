@@ -153,7 +153,7 @@ class TrackingForm(FlaskForm):
                                                                                           (3, 'Sad'), (4, 'Angry'),
                                                                                           (5, 'Sleepy'), (6, 'Sick'),
                                                                                           (7, 'Anxious')], default=1,
-                                                                                            coerce=int)
+                         coerce=int)
     mood_diary = StringField('Add a short optional reflective diary entry')
     sleep_duration_id = SelectField('How many hours did you sleep?', choices=[(1, 'No data'), (2, '1-5 hours'),
                                                                               (3, '5-8 hours'), (4, '8-10 hours'),
@@ -218,8 +218,6 @@ def tracking():
     return render_template('tracking.html', form=form, message=error, title='tracking')
 
 
-
-
 # getting list of current users
 @app.route('/user_list', methods=['GET'])
 def user_list():
@@ -232,11 +230,12 @@ def user_list():
 @app.route('/user_data', methods=['GET'])
 def user_data():
     error = ""
-    user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from(UserInfo)\
+    user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from(UserInfo) \
         .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).all()
     headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
                 'Sleep Quality', 'Water intake', 'Steps taken')
     return render_template('user_data.html', user_data=user_data, headings=headings, message=error)
+
 
 if __name__ == '__main__':
     with app.app_context():
