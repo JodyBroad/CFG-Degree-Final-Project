@@ -16,13 +16,6 @@
         </div>
     </section>
 </body>
-<div>
-{% for user in users %}
-   <p>{{user.id}} {{user.forename}} {{user.surname}} {{user.email}}</p>
-{% endfor %}
-    <br>
-    {{ message }}
-</div>
 
 <div>
     <p><a href="{{ url_for('home') }}">Home</a></p>
