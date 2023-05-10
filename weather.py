@@ -39,6 +39,29 @@ snow = [71, 73, 75, 77, 85, 86]
 storm = [95, 96, 99]
 
 
+def return_url(code):
+    if code in sunny:
+        image_url = "https://source.unsplash.com/Fpqx6GGXfXs"
+        print(image_url)
+    elif code in cloudy:
+        image_url = "https://source.unsplash.com/0juC5JIhPks"
+        print(image_url)
+    elif code in fog:
+        image_url = "https://source.unsplash.com/TFyi0QOx08c"
+        print(image_url)
+    elif code in drizzle or code in rain:
+        image_url = "https://source.unsplash.com/8lQyd8wEAzI"
+        print(image_url)
+    elif code in snow:
+        image_url = "https://source.unsplash.com/OoQKL4cLZuc"
+        print(image_url)
+    else:
+        image_url = "https://source.unsplash.com/lVDnLUACI18"
+        print(image_url)
+
+    return image_url
+
+
 # using the weather API
 
 # BASE_URL = "https://api.open-meteo.com/v1/forecast?"
@@ -61,28 +84,8 @@ if response.status_code == 200:
     # print(weather_dict[weathercode])
 
     # get image URL based on weathercode
-    if weathercode in sunny:
-        image_url = "https://source.unsplash.com/Fpqx6GGXfXs"
-        print(image_url)
-    elif weathercode in cloudy:
-        image_url = "https://source.unsplash.com/0juC5JIhPks"
-        print(image_url)
-    elif weathercode in fog:
-        image_url = "https://source.unsplash.com/TFyi0QOx08c"
-        print(image_url)
-    elif weathercode in drizzle or weathercode in rain:
-        image_url = "https://source.unsplash.com/8lQyd8wEAzI"
-        print(image_url)
-    elif weathercode in snow:
-        image_url = "https://source.unsplash.com/OoQKL4cLZuc"
-        print(image_url)
-    else:
-        image_url = "https://source.unsplash.com/lVDnLUACI18"
-        print(image_url)
+    return_url(weathercode)
 
 else:
     # showing the error message
     print("Error in the HTTP request")
-
-
-
