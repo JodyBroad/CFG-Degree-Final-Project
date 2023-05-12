@@ -5,9 +5,9 @@
 <body class="tracking">
     <!--tracking entry -->
         <div class="tracking-entry">
-          <h4>Tracking</h4>
+          <h1>Tracking</h1>
 
-            <div class='track-form'>
+            <div class="form" id='track-form'>
                     <form method='POST' action=''>
                         <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                         {{ form.hidden_tag() }}
@@ -25,7 +25,7 @@
                     {{ message }}
                     </form>
             </div>
-                <div id="tracking_links">
+                <div class="page_links" id="tracking_links">
                 <p><a href="{{ url_for('home') }}">Home</a></p>
                 <p><a href="{{ url_for('tracking') }}">Add tracking data (will default to today's date and User_ID=1 for now)</a></p>
                 <p><a href="{{ url_for('user_data') }}">View all current daily records</a></p>

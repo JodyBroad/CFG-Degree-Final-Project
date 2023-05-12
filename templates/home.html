@@ -11,7 +11,7 @@
     <div class="register">
       <h3>Sign up for an account</h3>
 
-        <div class='user_form'>
+        <div class='form' id="user_form">
             <form method='POST' action=''>
                 <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="page_links" id="home_links">
         <p><a href="{{ url_for('user_list') }}">View all current users</a></p>
     </div>
 
