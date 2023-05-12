@@ -12,15 +12,15 @@ storm = [95, 96, 99]
 
 def return_url(code):
     if code in sunny:
-        img_url = "https://source.unsplash.com/Fpqx6GGXfXs"
+        img_url = "https://source.unsplash.com/LD_phgnVdOA"
     elif code in cloudy:
-        img_url = "https://source.unsplash.com/0juC5JIhPks"
+        img_url = "https://source.unsplash.com/uftVkZ1ikn4"
     elif code in fog:
-        img_url = "https://source.unsplash.com/TFyi0QOx08c"
+        img_url = "https://source.unsplash.com/e2uTOpgW5Ec"
     elif code in drizzle or code in rain:
-        img_url = "https://source.unsplash.com/8lQyd8wEAzI"
+        img_url = "https://source.unsplash.com/8yt8kBuEqok"
     elif code in snow:
-        img_url = "https://source.unsplash.com/OoQKL4cLZuc"
+        img_url = "https://source.unsplash.com/efuwb5eBDrI"
     else:
         img_url = "https://source.unsplash.com/lVDnLUACI18"
 
