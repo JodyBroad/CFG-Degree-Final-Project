@@ -8,6 +8,7 @@ from wtforms import StringField, SubmitField, RadioField, SelectField, IntegerFi
 from wtforms.validators import Email, DataRequired
 # for date info
 from datetime import datetime
+from weather import find_weather
 
 # creating an instance of the app
 app = Flask(__name__)
@@ -187,8 +188,8 @@ def home():
             db.session.commit()
             # gives you a message if it works
             flash(f'Success! {form.email.data} is now signed up for an account', 'success')
-            return render_template('home.html', form=form, message=error, title='home')
-    return render_template('home.html', form=form, message=error, title='home')
+            return render_template('home.html', form=form, message=error, title='home', weather_img=find_weather())
+    return render_template('home.html', form=form, message=error, title='home', weather_img=find_weather())
 
 
 @app.route('/tracking', methods=['GET', 'POST'])

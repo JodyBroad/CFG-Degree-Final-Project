@@ -6,6 +6,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./static/styles.css">
     <title>Mood Tracker</title>
+    <style>
+        body {
+            background-image: url({{ weather_img }})
+        }
+    </style>
 </head>
 <body>
 
@@ -18,7 +23,7 @@
           {% endfor %}
         {% endif %}
       {% endwith %}
-{% block body_content %}{% endblock %}
+{% block body_content %} {% endblock %}
 
 </body>
 </html>

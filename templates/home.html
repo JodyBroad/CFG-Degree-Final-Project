@@ -3,25 +3,25 @@
 {% block body_content %}
 
     <div class="heading">
-    <p>Hello, welcome to our website</p>
-    <p>Eventually this will be a marvellous self-care app</p>
+        <p>Hello, welcome to our website</p>
+        <p>Eventually this will be a marvellous self-care app</p>
     </div>
 
 <!--account sign up - needs password and stuff -->
     <div class="register">
-      <h4>Sign up for an account</h4>
+      <h3>Sign up for an account</h3>
 
-        <div class='form'>
-                <form method='POST' action=''>
-                    <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
-                    {{ form.hidden_tag() }}
-                    {{ form.forename.label }} {{ form.forename }}
-                    {{ form.surname.label }} {{ form.surname }}
-                    {{ form.email.label }} {{ form.email }}
-                    <br>
-                    {{ form.submit }}
+        <div class='user_form'>
+            <form method='POST' action=''>
+                <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
+                {{ form.hidden_tag() }}
+                {{ form.forename.label }} {{ form.forename }}
+                {{ form.surname.label }} {{ form.surname }}
+                {{ form.email.label }} {{ form.email }}
+                <br>
+                {{ form.submit }}
                 {{ message }}
-                </form>
+            </form>
         </div>
     </div>
 
