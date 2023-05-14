@@ -139,7 +139,7 @@ def user_list():
 def user_data():
     error = ""
     user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from(UserInfo)\
-        .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).all()
+        .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).order_by(DailyRecord.record_date).all()
     headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
                 'Sleep Quality', 'Water intake', 'Steps taken')
     return render_template('user_data.html', user_data=user_data, headings=headings, message=error,
