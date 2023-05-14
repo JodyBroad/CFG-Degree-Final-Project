@@ -1,5 +1,6 @@
 from extensions import db
 
+
 # Models - table structure for the db
 
 # UserInfo table
@@ -49,4 +50,3 @@ class DailyRecord(db.Model):
     sleep_quality_id = db.Column(db.Integer, db.ForeignKey('sleep_quality'))
     water_intake = db.Column(db.Integer, nullable=True)
     steps_taken = db.Column(db.Integer, nullable=True)
-

@@ -2,28 +2,28 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
-        <p>Hello, welcome to our website</p>
-        <p>Eventually this will be a marvellous self-care app</p>
+    <p>Hello, welcome to our website</p>
+    <p>Eventually this will be a marvellous self-care app</p>
 
 
     <!--account sign up - needs password and stuff -->
-        <div class="register">
-          <h4>Sign up for an account</h4>
+    <div class="register">
+      <h4>Sign up for an account</h4>
 
-            <div class='form'>
-                    <form method='POST' action=''>
-                        <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
-                        {{ form.hidden_tag() }}
-                        {{ form.forename.label }} {{ form.forename }}
-                        {{ form.surname.label }} {{ form.surname }}
-                        {{ form.email.label }} {{ form.email }}
-                        {{ form.password.label }} {{form.password }}
-                        <br>
-                        {{ form.submit }}
-                    {{ message }}
-                    </form>
+        <div class='form'>
+            <form method='POST' action=''>
+                <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
+                {{ form.hidden_tag() }}
+                {{ form.forename.label }} {{ form.forename }}
+                {{ form.surname.label }} {{ form.surname }}
+                {{ form.email.label }} {{ form.email }}
+                {{ form.password.label }} {{form.password }}
+                <br>
+                {{ form.submit }}
+            {{ message }}
+            </form>
         </div>
-        </div>
+    </div>
 
 
 

@@ -5,8 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./static/styles.css">
-    <title>Tracking site - we really should think of a name</title>
+    <title>Mood Tracker</title>
+    <style>
+        body {
+            background-image: url({{ weather_img }})
+        }
+    </style>
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -26,9 +32,7 @@
             <a class="nav-link" href="{{ url_for('user_list') }}">User List</a>
           </li>
 
-
         </ul>
-
 
 <!--        Button to login-->
         <form class="form-inline">
@@ -50,15 +54,15 @@
 
 <!--    Will display any messages after a form has been submitted, e.g. success or error -->
   {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-              {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                  {{ message }}
-                </div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
-{% block body_content %}{% endblock %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+{% block body_content %} {% endblock %}
 
 
 </body>

@@ -2,8 +2,10 @@ from flask import Flask
 from extensions import db
 from create import seed
 
+
 def register_extensions(app):
     db.init_app(app)
+
 
 def create_app():
     app = Flask(__name__)
@@ -17,6 +19,7 @@ def create_app():
     register_extensions(app)
     return app
 
+
 app = create_app()
 
 if __name__ == '__main__':
@@ -26,3 +29,4 @@ if __name__ == '__main__':
         # https://stackoverflow.com/questions/42909816/can-i-avoid-circular-imports-in-flask-and-sqlalchemy
         from views import *
     app.run(debug=True)
+

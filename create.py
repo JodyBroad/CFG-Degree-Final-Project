@@ -1,5 +1,6 @@
 from models import UserInfo, MoodStatus, SleepDuration, SleepQuality, DailyRecord
 from extensions import db
+
 # Values for the table to be inserted
 
 # UserInfo table
@@ -56,6 +57,7 @@ daily_record_5 = DailyRecord(user_id=3, record_date='2023-05-06', mood_id=3, sle
 
 # save the rows to a list
 records = [daily_record_1, daily_record_2, daily_record_3, daily_record_4, daily_record_5]
+
 
 def seed():
     # just drops any existing data

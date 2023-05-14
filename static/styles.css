@@ -1,24 +1,25 @@
-/* copied from Melissa's branch*/
-/* to do - match designs */
-
-body {
-    height: 100vh;
-    background-color: aquamarine;
+/* ----- layout.html ----- */
+body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 100px;
 }
 
-form * {
+.form * {
     padding: 10px;
 }
 
-.btn {
+.btn{
     border-radius:30%;
     background-color: blueviolet;
-    color:white;
+    color:purple;
     font-weight: bold;
     margin: 10px;
 
@@ -26,6 +27,84 @@ form * {
 
 .btn:hover{
     cursor: pointer;
+}
+
+.page_links * {
+    color: purple;
+    margin: 20px;
+}
+
+
+/* ----- home ----- */
+.heading p{
+    font-size: 30px;
+}
+
+.heading{
+    text-align: center;
+}
+
+#home_links a{
+    color: white;
+}
+
+
+/* ----- user_lists ----- */
+.lists{
+    padding: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    background: linear-gradient(navy, lightblue);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.row p{
+    text-align: center;
+}
+
+#list_links a{
+    color: white;
+}
+
+
+/* ----- tracking ----- */
+.tracking{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    background: linear-gradient(Salmon, PapayaWhip);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.tracking h1, .track-form{
+    color: black;
+}
+
+
+/* ----- user_data ----- */
+.table, #user_data_heading{
+    color: black;
+}
+
+.user-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    background: linear-gradient(lavender, Plum);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 

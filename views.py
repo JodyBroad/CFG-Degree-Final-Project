@@ -4,6 +4,7 @@ from forms import *
 from app import app
 from extensions import db
 from datetime import datetime
+from weather import find_weather
 
 
 @app.route('/home', methods=['GET', 'POST'])
@@ -49,11 +50,11 @@ def home():
 
             # gives you a message if it works
             flash(f'Success! {form.email.data} is now logged in', 'success')
-            return render_template('home.html', form=form, message=error, title='home')
+            return render_template('home.html', form=form, message=error, title='home', weather_img=find_weather())
         else:
             flash(f' Login failed, please try again', 'danger')
-            return render_template('home.html', form=form, message=error, title='home')
-    return render_template('home.html', form=form, message=error, title='home')
+            return render_template('home.html', form=form, message=error, title='home', weather_img=find_weather())
+    return render_template('home.html', form=form, message=error, title='home', weather_img=find_weather())
 
 
 @app.route('/logout')
@@ -66,7 +67,7 @@ def logout():
     session.pop('id_number', default=None)
 
     flash(f' You have logged out!', 'success')
-    return render_template('logout.html', title='Logout', message=error,)
+    return render_template('logout.html', title='Logout', message=error, weather_img=find_weather())
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -87,8 +88,9 @@ def register():
             db.session.commit()
             # gives you a message if it works
             flash(f'Success! {form.email.data} is now signed up for an account', 'success')
-            return render_template('register.html', form=form, message=error, title='register')
-    return render_template('register.html', form=form, message=error, title='register')
+            return render_template('register.html', form=form, message=error, title='register',
+                                   weather_img=find_weather())
+    return render_template('register.html', form=form, message=error, title='register', weather_img=find_weather())
 
 
 @app.route('/tracking', methods=['GET', 'POST'])
@@ -116,11 +118,12 @@ def tracking():
             db.session.commit()
             flash(f'Success! Your entry was added', 'success')
             # if successful, return to the homepage
-            return render_template('tracking.html', form=form, message=error, title='tracking')
+            return render_template('tracking.html', form=form, message=error, title='tracking',
+                                   weather_img=find_weather())
         else:
             flash(f'Please log in to make an entry', 'danger')
             return redirect(url_for('home'))
-    return render_template('tracking.html', form=form, message=error, title='tracking')
+    return render_template('tracking.html', form=form, message=error, title='tracking', weather_img=find_weather())
 
 
 # getting list of current users
@@ -128,7 +131,7 @@ def tracking():
 def user_list():
     error = ""
     users = UserInfo.query
-    return render_template('user_list.html', users=users, message=error)
+    return render_template('user_list.html', users=users, message=error, weather_img=find_weather())
 
 
 # getting a list of all users daily records
@@ -139,4 +142,5 @@ def user_data():
         .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).all()
     headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
                 'Sleep Quality', 'Water intake', 'Steps taken')
-    return render_template('user_data.html', user_data=user_data, headings=headings, message=error)
+    return render_template('user_data.html', user_data=user_data, headings=headings, message=error,
+                           weather_img=find_weather())
