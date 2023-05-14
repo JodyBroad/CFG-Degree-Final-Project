@@ -2,8 +2,10 @@ from flask import Flask
 from extensions import db
 from create import seed
 
+
 def register_extensions(app):
     db.init_app(app)
+
 
 def create_app():
     app = Flask(__name__)
@@ -16,6 +18,7 @@ def create_app():
 
     register_extensions(app)
     return app
+
 
 app = create_app()
 
