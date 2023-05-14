@@ -22,7 +22,7 @@ app = create_app()
 if __name__ == '__main__':
     with app.app_context():
         seed()
+        # this import needs to be made here to avoid circular imports:
+        # https://stackoverflow.com/questions/42909816/can-i-avoid-circular-imports-in-flask-and-sqlalchemy
         from views import *
     app.run(debug=True)
-
-# https://stackoverflow.com/questions/42909816/can-i-avoid-circular-imports-in-flask-and-sqlalchemy
