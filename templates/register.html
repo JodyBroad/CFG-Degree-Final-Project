@@ -6,14 +6,16 @@
         <p>Eventually this will be a marvellous self-care app</p>
 
 
-    <!--log into existing account -->
-        <div class="Login">
-          <h4>Log in to an existing account</h4>
+    <!--account sign up - needs password and stuff -->
+        <div class="register">
+          <h4>Sign up for an account</h4>
 
             <div class='form'>
                     <form method='POST' action=''>
                         <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                         {{ form.hidden_tag() }}
+                        {{ form.forename.label }} {{ form.forename }}
+                        {{ form.surname.label }} {{ form.surname }}
                         {{ form.email.label }} {{ form.email }}
                         {{ form.password.label }} {{form.password }}
                         <br>
