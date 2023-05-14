@@ -20,11 +20,52 @@ form * {
     background-color: blueviolet;
     color:white;
     font-weight: bold;
-    margin-top: 10px;
+    margin: 10px;
+
 }
 
 .btn:hover{
     cursor: pointer;
+}
+
+
+a:link, a:visited, a:hover, a:active {
+/* removes the underline from links */
+    text-decoration: none;
+    color: #D7D9CE
+}
+
+a:hover {
+    color: #2B2D42;
+}
+
+li {
+    display: inline;
+    padding: 10px;
+}
+
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    float: left;
+    background-color: #0C7489;
+    align-item: center;
+    display: flex;
+    padding: 10px;
+    color: #D7D9CE;
+
+}
+
+.navbar ul {
+    list-style: none;
+    width: 800px;
+}
+
+.navbar-brand {
+    padding: 14px;
+    font-size: 30px;
 }
 
 /* i hate it */
