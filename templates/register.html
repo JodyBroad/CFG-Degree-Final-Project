@@ -2,13 +2,15 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
-    <p>Hello, welcome to our website</p>
-    <p>Eventually this will be a marvellous self-care app</p>
-
+<section class="register-section">
+    <div class="heading">
+        <p>Hello! Welcome to our Mood Tracker.</p>
+        <p>Enjoy this marvellous self-care app!</p>
+    </div>
 
     <!--account sign up - needs password and stuff -->
     <div class="register">
-      <h4>Sign up for an account</h4>
+      <h3>Sign up for an account</h3>
 
         <div class='form'>
             <form method='POST' action=''>
@@ -24,7 +26,7 @@
             </form>
         </div>
     </div>
-
+</section>
 
 
 {% endblock %}
