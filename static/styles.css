@@ -154,7 +154,34 @@ section {
     flex-direction: column;
     align-items: center;
     color: black;
+    padding: 20px;
 }
+
+table{
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th, td{
+    height: 40px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+th[scope=col] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+tr:hover {
+    background-color: coral !important;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 
 /* -------------------- user_list -------------------- */
 .user-section{
@@ -162,6 +189,7 @@ section {
     background-color: paleturquoise;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
     color: black;
