@@ -37,22 +37,18 @@ def find_weather():
     if response.status_code == 200:
         # getting data in the json format
         data = response.json()
-        # print(data)
+
         # getting all the daily data
         daily = data['daily']
+
         # getting the weather-code to tell us the weather condition on that day
         weathercode = daily['weathercode'][0]
-        # print(weathercode)
-        # print(weather_dict[weathercode])
 
         # get image URL based on weathercode
         image_url = return_url(weathercode)
-        # print(image_url)
         return image_url
 
     else:
         # showing the error message
         print("Error in the HTTP request")
 
-
-find_weather()
