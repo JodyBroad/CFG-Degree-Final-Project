@@ -13,7 +13,7 @@ def create_app():
     # You will need to change the password here if your MySQL password is different
     # the very first time you use this, make sure that you have gone into MySQL and just created a DB called
     # "CFGFinalProject" - you only need to do this once, don't need to do anything else in MySQL
-    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:IncorrectPaiPolca25@localhost/CFGFinalProject"
+    app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:password@localhost/CFGFinalProject"
     app.config['SECRET_KEY'] = "random string"
 
     register_extensions(app)
