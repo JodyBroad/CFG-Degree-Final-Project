@@ -2,19 +2,28 @@
 
 # this is what we will use to capture data entered on the website
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, RadioField, SelectField, IntegerField
+from wtforms import StringField, SubmitField, RadioField, SelectField, IntegerField, PasswordField, EmailField
 # validators will be useful for making sure valid input coming from the website
 from wtforms.validators import Email, DataRequired
+
 
 class BasicRegistrationForm(FlaskForm):
     forename = StringField('First Name')
     surname = StringField('Last Name')
-    email = StringField('Email', validators=[DataRequired(), Email(message="Please supply a valid email")])
-    password = StringField('Password', validators=[DataRequired()])
-    submit = SubmitField('Register')
+    email = EmailField('Email', validators=[DataRequired(), Email(message="Please supply a valid email")])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Register for a new account')
+
+
+class LogInForm(FlaskForm):
+    email = EmailField('Email', validators=[DataRequired(), Email(message="Please supply a valid email")])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Log In to Existing Account')
+
 
 class TrackingForm(FlaskForm):
-    # date is defaulting to today's date for now - can get this pulling through the date entered on the home screen later
+    # date is defaulting to today's date for now - can get this pulling through the date entered on the home screen
+    # later
     # date = datetime.today().strftime('%Y-%m-%d')
     mood_id = RadioField('Select the emoji that most closely matches your mood', choices=[(1, 'No data'), (2, 'Happy'),
                                                                                           (3, 'Sad'), (4, 'Angry'),

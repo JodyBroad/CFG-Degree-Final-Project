@@ -2,25 +2,25 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
-    <div class="heading">
-        <p>Hello, welcome to our website</p>
-        <p>Eventually this will be a marvellous self-care app</p>
-    </div>
+    <p>Hello, welcome to our website</p>
+    <p>Eventually this will be a marvellous self-care app</p>
 
-<!--account sign up - needs password and stuff -->
+
+    <!--account sign up - needs password and stuff -->
     <div class="register">
-      <h3>Sign up for an account</h3>
+      <h4>Sign up for an account</h4>
 
-        <div class='form' id="user_form">
+        <div class='form'>
             <form method='POST' action=''>
                 <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
                 {{ form.forename.label }} {{ form.forename }}
                 {{ form.surname.label }} {{ form.surname }}
                 {{ form.email.label }} {{ form.email }}
+                {{ form.password.label }} {{form.password }}
                 <br>
                 {{ form.submit }}
-                {{ message }}
+            {{ message }}
             </form>
         </div>
     </div>
