@@ -22,18 +22,25 @@
 
         <div class="form" id='track-form'>
             <form method='POST' action=''>
+                <div class="mood-selection">
                 <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
                 {{ form.mood_id.label }} {{ form.mood_id }}
                 {{ form.mood_diary.label }} {{ form.mood_diary }}
                 <br>
+                </div>
+                <div class="sleep-selection">
                 {{ form.sleep_duration_id.label }} {{ form.sleep_duration_id }}
                 {{ form.sleep_quality_id.label }} {{ form.sleep_quality_id }}
                 <br>
+                </div>
+                <div class="water-selection">
                 {{ form.water_intake.label }} {{ form.water_intake }}
                 <br>
+                </div>
+                <div class="steps-selection">
                 {{ form.steps_taken.label }} {{ form.steps_taken }}
-
+                </div>
                 {{ form.submit }}
             {{ message }}
             </form>
