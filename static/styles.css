@@ -9,7 +9,7 @@ body{
 }
 
 header{
-    background-color: #0C7489;
+    background-color: #4A1942;
     display: flex;
     align-items: center;
 }
@@ -44,11 +44,15 @@ header, section, footer {
 }
 
 .form-inline button{
-    background-color: blue;
-    padding: 8px;
+    background-color: #E2E4F6;
+    padding: 5px;
     text-transform: uppercase;
     font-weight: bold;
     margin: 10px;
+}
+
+.form-inline a{
+    color: #893168;
 }
 
 .btn:hover{
@@ -61,7 +65,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 footer {
-    background-color: #fdf2d1;
+    background-color: #E2E4F6;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
@@ -81,10 +85,12 @@ footer nav {
 footer a,
   footer p {
     margin: 10px 0;
+    color: black;
 }
 
 section {
-    min-height: 400px;;
+    min-height: 600px;
+    justify-content: center;
 }
 
 
@@ -131,11 +137,17 @@ section {
     padding: 10px;
 }
 
+.register-form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
 
 /* -------------------- tracking -------------------- */
 .tracking-section{
     /* background: linear-gradient(navy, lightblue); */
-    background-color: lightseagreen;
+    background-color: #048BA8;
     display: flex;
     flex-direction: column;
     color: white;
@@ -154,7 +166,7 @@ section {
     flex-direction: column;
     align-items: center;
     color: black;
-    padding: 20px;
+    padding: 30px;
 }
 
 table{
@@ -186,13 +198,13 @@ tr:nth-child(even) {
 /* -------------------- user_list -------------------- */
 .user-section{
     /* background: linear-gradient(Plum, lavender); */
-    background-color: paleturquoise;
+    background-color: #1B9AAA;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 
