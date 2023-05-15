@@ -20,6 +20,10 @@ h1 a{
     font-size: 30px;
 }
 
+header h1{
+    padding: 20px;
+}
+
 .navbar {
     width: 80%;
     display: flex;
@@ -85,7 +89,7 @@ footer nav {
 footer a,
   footer p {
     margin: 10px 0;
-    color: black;
+    color: purple;
 }
 
 section {
@@ -141,6 +145,16 @@ section {
     width: 400px;
     display: flex;
     flex-direction: column;
+}
+
+
+/* -------------------- register -------------------- */
+.logout-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 40px;
 }
 
 
