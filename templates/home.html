@@ -14,11 +14,13 @@
 
         <div class='form'>
             <form method='POST' action=''>
+                <div class="login-form">
                 <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
                 {{ form.email.label }} {{ form.email }}
                 {{ form.password.label }} {{form.password }}
                 <br>
+                </div>
                 {{ form.submit }}
             {{ message }}
             </form>
