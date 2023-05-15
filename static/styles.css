@@ -97,6 +97,14 @@ section {
     justify-content: center;
 }
 
+#messages{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 25px;
+}
 
 /* -------------------- home -------------------- */
 .home-section{
@@ -112,6 +120,7 @@ section {
 
 .heading{
     text-align: center;
+    padding-bottom: 40px;
 }
 
 .login h3{
