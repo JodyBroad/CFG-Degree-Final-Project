@@ -15,55 +15,59 @@
 
 <body>
 
-    <nav class="navbar">
-        <a class="navbar-brand" href="{{ url_for('home') }}">Adulting is Hell</a>
+    <header>
+        <h1>
+        <a class="navbar-brand" href="{{ url_for('home') }}">Mood Tracker</a>
+        </h1>
 
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+        <nav class="navbar">
             <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-          </li>
-          <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('tracking') }}">Tracking</a>
-          </li>
-          <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('user_data') }}">User Data</a>
-          </li>
-          <li class="nav-item active">
             <a class="nav-link" href="{{ url_for('user_list') }}">User List</a>
-          </li>
 
-        </ul>
+    <!--        Button to login-->
+            <form class="form-inline">
+              <button class="btn" type="button"><a href="{{ url_for('home') }}">Log in</a></button>
 
-<!--        Button to login-->
-        <form class="form-inline">
-          <button class="btn" type="button"><a href="{{ url_for('home') }}">Log in</a></button>
-        </form>
+    <!--        Button to register-->
+              <button class="btn" type="button"><a href="{{ url_for('register') }}">Register</a></button>
 
-<!--        Button to register-->
-        <form class="form-inline">
-          <button class="btn" type="button"><a href="{{ url_for('register') }}">Register</a></button>
-        </form>
+    <!--        Button to logout-->
+              <button class="btn" type="button"><a href="{{ url_for('logout') }}">Logout</a></button>
+            </form>
 
-        <!--        Button to logout-->
-        <form class="form-inline">
-          <button class="btn" type="button"><a href="{{ url_for('logout') }}">Logout</a></button>
-        </form>
+        </nav>
+    </header>
 
-    </nav>
+    <main>
+    <!--    Will display any messages after a form has been submitted, e.g. success or error -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div id="messages" class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+    {% block body_content %} {% endblock %}
+    </main>
 
+    <footer>
+        <nav>
+            <h2>Useful Links</h2>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="#">Self-care Tips</a>
+        </nav>
 
-<!--    Will display any messages after a form has been submitted, e.g. success or error -->
-  {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-              {{ message }}
-            </div>
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-{% block body_content %} {% endblock %}
-
+        <div class="footer__contacts">
+            <a href="mailto:moodtracker@adultingmoodtracker.com">moodtracker@adultingmoodtracker.com</a>
+            <a href="tel:+44 (5182) 797 9825">+44 (5182) 797 9825</a>
+            <p> &copy; Adulting is Hard 2023</p>
+        </div>
+    </footer>
 
 </body>
 </html>

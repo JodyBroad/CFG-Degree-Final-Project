@@ -25,17 +25,17 @@ class TrackingForm(FlaskForm):
     # date is defaulting to today's date for now - can get this pulling through the date entered on the home screen
     # later
     # date = datetime.today().strftime('%Y-%m-%d')
-    mood_id = RadioField('Select the emoji that most closely matches your mood', choices=[(1, 'No data'), (2, 'Happy'),
+    mood_id = RadioField('Select the emoji that most closely matches your mood ', choices=[(1, 'No data'), (2, 'Happy'),
                                                                                           (3, 'Sad'), (4, 'Angry'),
                                                                                           (5, 'Sleepy'), (6, 'Sick'),
                                                                                           (7, 'Anxious')], default=1,
                                                                                             coerce=int)
-    mood_diary = StringField('Add a short optional reflective diary entry')
-    sleep_duration_id = SelectField('How many hours did you sleep?', choices=[(1, 'No data'), (2, '1-5 hours'),
+    mood_diary = StringField('Add a short optional reflective diary entry ')
+    sleep_duration_id = SelectField('How many hours did you sleep? ', choices=[(1, 'No data'), (2, '1-5 hours'),
                                                                               (3, '5-8 hours'), (4, '8-10 hours'),
                                                                               (5, '10+ hours')])
-    sleep_quality_id = SelectField('How would you rate the quality of your sleep?', choices=[(1, 'No data'),
+    sleep_quality_id = SelectField('How would you rate the quality of your sleep? ', choices=[(1, 'No data'),
                                                                                              (2, 'Good'), (3, 'Bad')])
-    water_intake = IntegerField('How many ml of water have you drunk today?')
-    steps_taken = IntegerField('How many steps have you taken today?')
-    submit = SubmitField('Submit tracking record')
+    water_intake = IntegerField('How many ml of water have you drunk today? ')
+    steps_taken = IntegerField('How many steps have you taken today? ')
+    submit = SubmitField('Submit tracking record ')

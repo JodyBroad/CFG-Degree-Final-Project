@@ -2,27 +2,31 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
+<section class="home-section">
     <div class="heading">
-        <p>Hello, welcome to our website</p>
-        <p>Eventually this will be a marvellous self-care app</p>
+        <p>Hello! Welcome to our Mood Tracker.</p>
+        <p>Enjoy this marvellous self-care app!</p>
     </div>
 
     <!--log into existing account -->
-    <div class="Login">
-      <h4>Log in to an existing account</h4>
+    <div class="login">
+      <h3>Log in to an existing account</h3>
 
         <div class='form'>
             <form method='POST' action=''>
+                <div class="login-form">
                 <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
                 {{ form.email.label }} {{ form.email }}
                 {{ form.password.label }} {{form.password }}
                 <br>
+                </div>
                 {{ form.submit }}
             {{ message }}
             </form>
         </div>
     </div>
+</section>
 
 
 {% endblock %}

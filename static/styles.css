@@ -1,150 +1,251 @@
-/* ----- layout.html ----- */
+/* -------------------- layout -------------------- */
 body{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
+    margin: 0%;
+    background: linear-gradient(Salmon, PapayaWhip);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    padding: 100px;
+    font-family: sans-serif;
+}
+
+header{
+    background-color: #4A1942;
+    display: flex;
+    align-items: center;
+}
+
+h1 a{
+    width: 20%;
+    color: white;
+    font-size: 30px;
+}
+
+header h1{
+    padding: 20px;
+}
+
+.navbar {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding: 35px;
+}
+
+.navbar a{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+header, section, footer {
+    padding: 20px 10%;
 }
 
 .form * {
     padding: 10px;
 }
 
-.btn{
-    border-radius:30%;
-    background-color: blueviolet;
-    color:purple;
+.form-inline button{
+    background-color: #E2E4F6;
+    padding: 5px;
+    text-transform: uppercase;
     font-weight: bold;
     margin: 10px;
+}
 
+.form-inline a{
+    color: #893168;
 }
 
 .btn:hover{
     cursor: pointer;
 }
 
-.page_links * {
-    color: purple;
-    margin: 20px;
+a:link, a:visited, a:hover, a:active {
+/* removes the underline from links */
+    text-decoration: none;
 }
 
+footer {
+    background-color: #E2E4F6;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
 
-/* ----- home ----- */
+footer nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__contacts{
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    align-items: left;
+}
+
+footer a,
+  footer p {
+    margin: 10px 0;
+    color: purple;
+}
+
+section {
+    min-height: 600px;
+    justify-content: center;
+}
+
+#messages{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+/* -------------------- home -------------------- */
+.home-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
 .heading p{
     font-size: 30px;
 }
 
 .heading{
     text-align: center;
+    padding-bottom: 40px;
 }
 
-#home_links a{
-    color: white;
-}
-
-
-/* ----- user_lists ----- */
-.lists{
-    padding: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    background: linear-gradient(navy, lightblue);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.row p{
+.login h3{
     text-align: center;
 }
 
-#list_links a{
+.login form{
+    align-items: center;
+    padding: 10px;
+}
+
+.login-form #email, .login-form #password{
+    width: 200px;
+}
+
+
+/* -------------------- register -------------------- */
+.register-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.register h3{
+    text-align: center;
+}
+
+.register form{
+    align-items: center;
+    padding: 10px;
+}
+
+.register-form{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* -------------------- logout -------------------- */
+.logout-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+}
+
+
+/* -------------------- tracking -------------------- */
+.tracking-section{
+    /* background: linear-gradient(navy, lightblue); */
+    background-color: #048BA8;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.tracking-entry{
+    padding: 10px;
+}
+
+.mood-selection ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mood-selection li{
+    display: inline;
+}
+
+#mood_diary{
+    width: 500px;
+}
+
+
+/* -------------------- user_data -------------------- */
+.data-section{
+    /* background: linear-gradient(Salmon, PapayaWhip); */
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    padding: 30px;
+}
+
+table{
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th, td{
+    height: 40px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+th[scope=col] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+tr:hover {
+    background-color: coral !important;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+/* -------------------- user_list -------------------- */
+.user-section{
+    /* background: linear-gradient(Plum, lavender); */
+    background-color: #1B9AAA;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: white;
 }
 
 
-/* ----- tracking ----- */
-.tracking{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
-    background: linear-gradient(Salmon, PapayaWhip);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.tracking h1, .track-form{
-    color: black;
-}
-
-
-/* ----- user_data ----- */
-.table, #user_data_heading{
-    color: black;
-}
-
-.user-data{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: black;
-    background: linear-gradient(lavender, Plum);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-
-a:link, a:visited, a:hover, a:active {
-/* removes the underline from links */
-    text-decoration: none;
-    color: #D7D9CE
-}
-
-a:hover {
-    color: #2B2D42;
-}
-
-li {
-    display: inline;
-    padding: 10px;
-}
-
-
-.navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    float: left;
-    background-color: #0C7489;
-    align-item: center;
-    display: flex;
-    padding: 10px;
-    color: #D7D9CE;
-
-}
-
-.navbar ul {
-    list-style: none;
-    width: 800px;
-}
-
-.navbar-brand {
-    padding: 14px;
-    font-size: 30px;
-}
-
-/* i hate it */
