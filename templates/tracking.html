@@ -22,10 +22,12 @@
 
         <div class="form" id='track-form'>
             <form method='POST' action=''>
-                <div class="mood-selection">
                 <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
+                <div class="mood-selection">
                 {{ form.mood_id.label }} {{ form.mood_id }}
+                </div>
+                <div class="diary-entry">
                 {{ form.mood_diary.label }} {{ form.mood_diary }}
                 <br>
                 </div>

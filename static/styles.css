@@ -132,6 +132,10 @@ section {
     padding: 10px;
 }
 
+.login-form #email, .login-form #password{
+    width: 200px;
+}
+
 
 /* -------------------- register -------------------- */
 .register-section{
@@ -157,7 +161,7 @@ section {
 }
 
 
-/* -------------------- register -------------------- */
+/* -------------------- logout -------------------- */
 .logout-section{
     display: flex;
     flex-direction: column;
@@ -178,6 +182,20 @@ section {
 
 .tracking-entry{
     padding: 10px;
+}
+
+.mood-selection ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mood-selection li{
+    display: inline;
+}
+
+#mood_diary{
+    width: 500px;
 }
 
 
