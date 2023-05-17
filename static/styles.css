@@ -102,8 +102,9 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    padding: 10px;
     font-size: 25px;
+    background-color: black;
 }
 
 /* -------------------- home -------------------- */
