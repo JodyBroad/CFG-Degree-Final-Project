@@ -3,9 +3,11 @@ from main import db
 if db:
     print("db connection working")
 
+# weather tests
+
 
 import unittest
-from weather.py import return_url
+from weather import return_url
 
 class TestReturnUrl(unittest.TestCase):
     def test_return_url(self):
@@ -25,7 +27,7 @@ class TestReturnUrl(unittest.TestCase):
         actual_foggy_url = return_url(foggy_codes)
         self.assertEqual(actual_foggy_url, expected_foggy_url)
 #         test for drizzle or rain
-        rain_or_drizzle_codes = [51, 53, 55, 56, 57], [61, 63, 65, 80, 81, 82]
+        rain_or_drizzle_codes = [51, 53, 55, 56, 57] + [61, 63, 65, 80, 81, 82]
         expected_rain_or_drizzle_url = "https://source.unsplash.com/8yt8kBuEqok"
         actual_rain_or_drizzle_url = return_url(rain_or_drizzle_codes)
         self.assertEqual(actual_rain_or_drizzle_url, expected_rain_or_drizzle_url)
@@ -35,9 +37,10 @@ class TestReturnUrl(unittest.TestCase):
         actual_snow_url = return_url(snow_codes)
         self.assertEqual(actual_snow_url, expected_snow_url)
 #         test for else
-        other_codes = []
+        other_codes = [""]
         expected_other_url = "https://source.unsplash.com/lVDnLUACI18"
         actual_other_url = return_url(other_codes)
         self.assertEqual(actual_other_url, expected_other_url)
 if __name__ == '__main__':
     unittest.main()
+
