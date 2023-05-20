@@ -12,7 +12,7 @@ class TestReturnUrl(unittest.TestCase):
     def test_return_url(self):
         # Testing if sunny URL is returned
         sunny_codes = [0, 1]
-        expected_sunny_url = "https://source.unsplash.com/LD_phgnVdOA"
+        expected_sunny_url = "https://source.unsplash.com/lVDnLUACI18"
         actual_sunny_url = return_url(sunny_codes)
         self.assertEqual(actual_sunny_url, expected_sunny_url)
 
