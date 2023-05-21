@@ -25,11 +25,14 @@ class TrackingForm(FlaskForm):
     # date is defaulting to today's date for now - can get this pulling through the date entered on the home screen
     # later
     # date = datetime.today().strftime('%Y-%m-%d')
-    mood_id = RadioField('Select the emoji that most closely matches your mood ', choices=[(1, 'No data'), (2, 'Happy'),
-                                                                                          (3, 'Sad'), (4, 'Angry'),
-                                                                                          (5, 'Sleepy'), (6, 'Sick'),
-                                                                                          (7, 'Anxious')], default=1,
-                                                                                            coerce=int)
+    mood_id = RadioField('Select the emoji that most closely matches your mood ', choices=[(1, '\U0001F636 - No data'),
+                                                                                        (2, '\U0001F600 - Happy'),
+                                                                                        (3, '\U0001F622 - Sad'),
+                                                                                        (4, '\U0001F92C - Angry'),
+                                                                                        (5, '\U0001F634 - Sleepy'),
+                                                                                        (6, '\U0001F912 - Sick'),
+                                                                                        (7, '\U0001F61F - Anxious')],
+                                                                                        default=1, coerce=int)
     mood_diary = StringField('Add a short optional reflective diary entry ')
     sleep_duration_id = SelectField('How many hours did you sleep? ', choices=[(1, 'No data'), (2, '1-5 hours'),
                                                                               (3, '5-8 hours'), (4, '8-10 hours'),
