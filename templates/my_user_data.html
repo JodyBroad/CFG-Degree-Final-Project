@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body_content %}
+
+<section class="data-section">
+    <div class="user-data">
+        <h2 id="user_data_heading">User data</h2>
+
+        <div class="container-fluid bg-1 text-center">
+            <div class="table-responsive table-striped">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        {% for header in headings %}
+                            <th scope="col">{{ header }}</th>
+                        {% endfor %}
+                         </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                        {% for user, record, mood, sleep_duration, sleep_quality in user_data %}
+
+                            <th scope="row">{{user.forename}}</th>
+                              <td>{{ user.surname }} </td>
+                              <td>{{ user.email }}</td>
+                              <td>{{ record.record_date }}</td>
+                              <td>{{ mood.mood }}</td>
+                              <td>{{ record.mood_diary }}</td>
+                              <td>{{ sleep_duration.duration }}</td>
+                              <td>{{ sleep_quality.quality}}</td>
+                              <td>{{ record.water_intake }}</td>
+                              <td>{{ record.steps_taken }}</td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
