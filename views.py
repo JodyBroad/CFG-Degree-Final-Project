@@ -144,3 +144,21 @@ def user_data():
                 'Sleep Quality', 'Water intake', 'Steps taken')
     return render_template('user_data.html', user_data=user_data, headings=headings, message=error,
                            weather_img=find_weather())
+
+
+# getting a list of logged in users daily records
+@app.route('/my_user_data', methods=['GET'])
+def my_user_data():
+    error = ""
+    if 'logged_in' in session:
+        user_id = session['id_number']
+        user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from\
+            (UserInfo).filter_by(user_id=user_id).join(DailyRecord).join(MoodStatus).join(SleepDuration).\
+            join(SleepQuality).order_by(DailyRecord.record_date).all()
+        headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
+                    'Sleep Quality', 'Water intake', 'Steps taken')
+        return render_template('my_user_data.html', user_data=user_data, headings=headings, message=error,
+                               weather_img=find_weather())
+    else:
+        flash(f'Please log in to view your entries', 'danger')
+        return redirect(url_for('home'))
