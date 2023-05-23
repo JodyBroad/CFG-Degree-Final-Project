@@ -212,31 +212,30 @@ section {
     padding: 30px;
 }
 
-table{
+.user-data-table {
     width: 100%;
     text-align: left;
     border-collapse: collapse;
 }
 
-th, td{
+.user-data-heading, .user-data-cell{
     height: 40px;
     padding: 15px;
     border-bottom: 1px solid #ddd;
 }
 
-th[scope=col] {
+.user-data-heading[scope=col] {
   background-color: #04AA6D;
   color: white;
 }
 
-tr:hover {
+.user-data-row:hover {
     background-color: coral !important;
 }
 
-tr:nth-child(even) {
+.user-data-row:nth-child(even) {
     background-color: #f2f2f2;
 }
-
 
 /* -------------------- user_list -------------------- */
 .user-section{
@@ -250,4 +249,34 @@ tr:nth-child(even) {
     color: white;
 }
 
+/* -------------------- calendar -------------------- */
+.emoji {
+    transform: scale(3);
+}
 
+#calendar {
+    padding: 0 1em;
+}
+
+.fc-event-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    font-style: normal !important;
+    font-size: medium !important;
+}
+
+.fc-day-today {
+    background-color: rgba(202, 228, 233, 0.991) !important;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-around;
+    margin: 1em auto;
+}
+
+:root {
+    --fc-bg-event-opacity: 1;
+}

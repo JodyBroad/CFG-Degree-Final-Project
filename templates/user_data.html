@@ -7,29 +7,28 @@
 
         <div class="container-fluid bg-1 text-center">
             <div class="table-responsive table-striped">
-                <table class="table">
+                <table class="table user-data-table">
                     <thead>
                         <tr>
                         {% for header in headings %}
-                            <th scope="col">{{ header }}</th>
+                            <th class="user-data-heading" scope="col">{{ header }}</th>
                         {% endfor %}
                          </tr>
                     </thead>
 
                     <tbody>
-                        <tr>
                         {% for user, record, mood, sleep_duration, sleep_quality in user_data %}
-
-                            <th scope="row">{{user.forename}}</th>
-                              <td>{{ user.surname }} </td>
-                              <td>{{ user.email }}</td>
-                              <td>{{ record.record_date }}</td>
-                              <td>{{ mood.mood }}</td>
-                              <td>{{ record.mood_diary }}</td>
-                              <td>{{ sleep_duration.duration }}</td>
-                              <td>{{ sleep_quality.quality}}</td>
-                              <td>{{ record.water_intake }}</td>
-                              <td>{{ record.steps_taken }}</td>
+                        <tr class="user-data-row">
+                            <th class="user-data-heading" scope="row">{{user.forename}}</th>
+                              <td class="user-data-cell">{{ user.surname }} </td>
+                              <td class="user-data-cell">{{ user.email }}</td>
+                              <td class="user-data-cell">{{ record.record_date }}</td>
+                              <td class="user-data-cell">{{ mood.mood }}</td>
+                              <td class="user-data-cell">{{ record.mood_diary }}</td>
+                              <td class="user-data-cell">{{ sleep_duration.duration }}</td>
+                              <td class="user-data-cell">{{ sleep_quality.quality}}</td>
+                              <td class="user-data-cell">{{ record.water_intake }}</td>
+                              <td class="user-data-cell">{{ record.steps_taken }}</td>
                         </tr>
                         {% endfor %}
 

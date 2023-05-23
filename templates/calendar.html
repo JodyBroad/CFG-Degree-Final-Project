@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<nav class="calendar-controls">
+  <label>
+    User
+    <select name="selected-user" id="selected-user">
+      {% for user in users %}
+      <option value="{{ user.userId }}">{{ user.forename }} {{ user.surname }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  
+  <label>
+    Metric
+    <select name="selected-metric" id="selected-metric">
+      {% for metric in ['Mood', 'Sleep Duration', 'Sleep Quality', 'Water Consumption', 'Steps Taken'] %}
+      <option value="{{ metric }}">{{ metric }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</nav>
+
+<div id='calendar'></div>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
+<script>
+  const users = {{ users | tojson }};
+  let targetUser;
+
+  {% for user, record, mood, sleep_duration, sleep_quality in user_data %}
+    targetUser = users.find(user => user.userId === {{ user.user_id }});
+
+    if (!targetUser.entries) {
+      targetUser.entries = [];
+    }
+
+    targetUser.entries.push({
+      mood: '{{ mood.mood }}',
+      sleepDuration: '{{ sleep_duration.duration }}',
+      sleepQuality: '{{ sleep_quality.quality }}',
+      date: '{{ record.record_date }}',
+      water: '{{ record.water_intake }}',
+      steps: '{{ record.steps_taken }}',
+    });
+  {% endfor %}
+</script>
+<script src="/static/calendar.js"></script>
+{% endblock %}

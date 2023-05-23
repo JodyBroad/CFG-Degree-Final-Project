@@ -145,6 +145,20 @@ def user_data():
     return render_template('user_data.html', user_data=user_data, headings=headings, message=error,
                            weather_img=find_weather())
 
+@app.route('/calendar', methods=['GET'])
+def calendar():
+    users = [user_info.serialize() for user_info in db.session.query(UserInfo).all()]
+
+    user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality)\
+        .select_from(UserInfo)\
+        .join(DailyRecord)\
+        .join(MoodStatus)\
+        .join(SleepDuration)\
+        .order_by(UserInfo.user_id)\
+        .order_by(DailyRecord.record_date)\
+        .all()
+
+    return render_template('calendar.html', user_data=user_data, users=users)
 
 # getting a list of logged in users daily records
 @app.route('/my_user_data', methods=['GET'])
