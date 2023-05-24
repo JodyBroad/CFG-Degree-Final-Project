@@ -104,6 +104,26 @@ daily_record_29 = DailyRecord(user_id=5, record_date='2023-05-13', mood_id=2, mo
                               sleep_duration_id=2, sleep_quality_id=3, water_intake=2500, steps_taken=11500)
 daily_record_30 = DailyRecord(user_id=5, record_date='2023-05-14', mood_id=4, mood_diary='Work sucked today!',
                               sleep_duration_id=5, sleep_quality_id=2, water_intake=2000, steps_taken=11500)
+daily_record_31 = DailyRecord(user_id=5, record_date='2023-05-15', mood_id=3, sleep_duration_id=4, sleep_quality_id=2,
+                              water_intake=1500, steps_taken=1000)
+daily_record_32 = DailyRecord(user_id=5, record_date='2023-05-16', mood_id=2, mood_diary='Fine',
+                              sleep_duration_id=3, sleep_quality_id=2, water_intake=1500, steps_taken=8500)
+daily_record_33 = DailyRecord(user_id=5, record_date='2023-05-17', mood_id=3,
+                              sleep_duration_id=3, sleep_quality_id=3, water_intake=1800, steps_taken=12000)
+daily_record_34 = DailyRecord(user_id=5, record_date='2023-05-18', mood_id=5, mood_diary='So very tired',
+                              sleep_duration_id=2, sleep_quality_id=3, water_intake=2500, steps_taken=11500)
+daily_record_35 = DailyRecord(user_id=5, record_date='2023-05-19', mood_id=4, mood_diary='This is fine',
+                              sleep_duration_id=5, sleep_quality_id=2, water_intake=2000, steps_taken=11500)
+daily_record_36 = DailyRecord(user_id=5, record_date='2023-05-20', mood_id=3, sleep_duration_id=4, sleep_quality_id=2,
+                              water_intake=1500, steps_taken=1000)
+daily_record_37 = DailyRecord(user_id=5, record_date='2023-05-21', mood_id=4, mood_diary='Fine',
+                              sleep_duration_id=3, sleep_quality_id=2, water_intake=2500, steps_taken=9500)
+daily_record_38 = DailyRecord(user_id=5, record_date='2023-05-22', mood_id=3,
+                              sleep_duration_id=3, sleep_quality_id=3, water_intake=1800, steps_taken=1000)
+daily_record_39 = DailyRecord(user_id=5, record_date='2023-05-23', mood_id=2, mood_diary='Had a great day!',
+                              sleep_duration_id=2, sleep_quality_id=3, water_intake=2500, steps_taken=11500)
+daily_record_40 = DailyRecord(user_id=5, record_date='2023-05-24', mood_id=4, mood_diary='Work sucked today!',
+                              sleep_duration_id=5, sleep_quality_id=2, water_intake=2000, steps_taken=11500)
 
 
 # save the rows to a list
@@ -112,7 +132,9 @@ records = [daily_record_1, daily_record_2, daily_record_3, daily_record_4, daily
            daily_record_13, daily_record_14, daily_record_15, daily_record_16, daily_record_17, daily_record_18,
            daily_record_19, daily_record_20, daily_record_21, daily_record_22,
            daily_record_23, daily_record_24, daily_record_25, daily_record_26, daily_record_27, daily_record_28,
-           daily_record_29, daily_record_30]
+           daily_record_29, daily_record_30, daily_record_31, daily_record_32,
+           daily_record_33, daily_record_34, daily_record_35, daily_record_36, daily_record_37, daily_record_38,
+           daily_record_39, daily_record_40]
 
 
 def seed():
