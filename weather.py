@@ -50,5 +50,6 @@ def find_weather():
 
     else:
         # showing the error message
-        print("Error in the HTTP request")
+        raise Exception("Error in the HTTP request")
+        # print("Error in the HTTP request")
 
