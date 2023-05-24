@@ -4,14 +4,14 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, RadioField, SelectField, IntegerField, PasswordField, EmailField
 # validators will be useful for making sure valid input coming from the website
-from wtforms.validators import Email, DataRequired
+from wtforms.validators import Email, DataRequired,Length
 
 
 class BasicRegistrationForm(FlaskForm):
-    forename = StringField('First Name')
-    surname = StringField('Last Name')
+    forename = StringField('First Name', validators=[DataRequired(), Length(min=2, max=30)])
+    surname = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=30)])
     email = EmailField('Email', validators=[DataRequired(), Email(message="Please supply a valid email")])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
     submit = SubmitField('Register for a new account')
 
 
