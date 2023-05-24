@@ -29,7 +29,7 @@ def home():
 
         # this is the refined query - will only return something if it matches both username and password
         db_username_password = UserInfo.query.filter_by(email=form_username, password=form_password).all()
-        print(db_username_password)
+        # print(db_username_password)
         for user_id in db_username_password:
             user_id_for_session_variable = user_id.user_id
 
