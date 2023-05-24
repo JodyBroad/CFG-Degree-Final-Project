@@ -56,7 +56,7 @@ def find_weather():
     response = requests.get("https://api.open-meteo.com/v1/forecast?latitude=51.51&longitude=-0.13&forecast_days=1"
                             "&timezone=GMT&daily=weathercode")
 
-    # check the request
+    # check the request response
     background_url = response_code(response, response.status_code)
 
     return background_url
