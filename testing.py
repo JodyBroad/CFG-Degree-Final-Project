@@ -40,15 +40,14 @@ class TestViews(TestCase):
             # would be good to get this testing something more detailed than just if it is bringing stuff back
             self.assertIsNotNone(user_data)
 
-
     # test a query that should fail and make sure it raises an error if table name doesn't exist
-    def test_not_user_list(self):
-        with app.app_context():
-            # would be good to get this testing something more detailed than just if it is bringing stuff back
-            # not sure this is a valid test, was just trying to get it to make sure to raise an error if invalid table
-            # name, but python picks this up before it is an issue, so not sure it is valid!
-            with self.assertRaises(NameError):
-                users = UserNotInfo.query
+    # def test_not_user_list(self):
+    #     with app.app_context():
+    #         # would be good to get this testing something more detailed than just if it is bringing stuff back
+    #         # not sure this is a valid test, was just trying to get it to make sure to raise an error if invalid table
+    #         # name, but python picks this up before it is an issue, so not sure it is valid!
+    #         with self.assertRaises(NameError):
+    #             users = UserNotInfo.query
 
 
 class TestReturnUrl(TestCase):
@@ -57,8 +56,8 @@ class TestReturnUrl(TestCase):
         # # Testing if sunny URL is returned
         sunny_codes = [0, 1]
         expected_sunny_url = "https://source.unsplash.com/LD_phgnVdOA"
-        actual_sunny_url_0 = return_url(0)
-        actual_sunny_url_1 = return_url(1)
+        actual_sunny_url_0 = return_url(sunny_codes[0])
+        actual_sunny_url_1 = return_url(sunny_codes[1])
         self.assertEqual(actual_sunny_url_0, expected_sunny_url)
         self.assertEqual(actual_sunny_url_1, expected_sunny_url)
 
@@ -80,20 +79,50 @@ class TestReturnUrl(TestCase):
         self.assertEqual(actual_foggy_url_45, expected_foggy_url)
         self.assertEqual(actual_foggy_url_48, expected_foggy_url)
 
-    # not yet working, just needs reformatting as per the above
-    # def test_return_url_rain_or_drizzle(self):
-    #     # # Testing for rain or drizzle URL
-    #     rain_or_drizzle_codes = [51, 53, 55, 56, 57] + [61, 63, 65, 80, 81, 82]
-    #     expected_rain_or_drizzle_url = "https://source.unsplash.com/8yt8kBuEqok"
-    #     actual_rain_or_drizzle_url = return_url(rain_or_drizzle_codes)
-    #     self.assertEqual(actual_rain_or_drizzle_url, expected_rain_or_drizzle_url)
+    def test_return_url_rain_or_drizzle(self):
+        # # Testing for rain or drizzle URL
+        rain_or_drizzle_codes = [51, 53, 55, 56, 57, 61, 63, 65, 80, 81, 82]
+        expected_rain_or_drizzle_url = "https://source.unsplash.com/8yt8kBuEqok"
+        actual_rain_or_drizzle_url_51 = return_url(rain_or_drizzle_codes[0])
+        actual_rain_or_drizzle_url_53 = return_url(rain_or_drizzle_codes[1])
+        actual_rain_or_drizzle_url_55 = return_url(rain_or_drizzle_codes[2])
+        actual_rain_or_drizzle_url_56 = return_url(rain_or_drizzle_codes[3])
+        actual_rain_or_drizzle_url_57 = return_url(rain_or_drizzle_codes[4])
+        actual_rain_or_drizzle_url_61 = return_url(rain_or_drizzle_codes[5])
+        actual_rain_or_drizzle_url_63 = return_url(rain_or_drizzle_codes[6])
+        actual_rain_or_drizzle_url_65 = return_url(rain_or_drizzle_codes[7])
+        actual_rain_or_drizzle_url_80 = return_url(rain_or_drizzle_codes[8])
+        actual_rain_or_drizzle_url_81 = return_url(rain_or_drizzle_codes[9])
+        actual_rain_or_drizzle_url_82 = return_url(rain_or_drizzle_codes[10])
+        self.assertEqual(actual_rain_or_drizzle_url_51, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_53, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_55, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_56, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_57, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_61, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_63, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_65, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_80, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_81, expected_rain_or_drizzle_url)
+        self.assertEqual(actual_rain_or_drizzle_url_82, expected_rain_or_drizzle_url)
 
     # not yet working, just needs reformatting as per the above
-    # # Testing for snow URL
-    # snow_codes = [71, 73, 75, 77, 85, 86]
-    # expected_snow_url = "https://source.unsplash.com/efuwb5eBDrI"
-    # actual_snow_url = return_url(snow_codes)
-    # self.assertEqual(actual_snow_url, expected_snow_url)
+    # Testing for snow URL
+    def test_return_url_snow(self):
+        snow_codes = [71, 73, 75, 77, 85, 86]
+        expected_snow_url = "https://source.unsplash.com/efuwb5eBDrI"
+        actual_snow_url_71 = return_url(snow_codes[0])
+        actual_snow_url_73 = return_url(snow_codes[1])
+        actual_snow_url_75 = return_url(snow_codes[2])
+        actual_snow_url_77 = return_url(snow_codes[3])
+        actual_snow_url_85 = return_url(snow_codes[4])
+        actual_snow_url_86 = return_url(snow_codes[5])
+        self.assertEqual(actual_snow_url_71, expected_snow_url)
+        self.assertEqual(actual_snow_url_73, expected_snow_url)
+        self.assertEqual(actual_snow_url_75, expected_snow_url)
+        self.assertEqual(actual_snow_url_77, expected_snow_url)
+        self.assertEqual(actual_snow_url_85, expected_snow_url)
+        self.assertEqual(actual_snow_url_86, expected_snow_url)
 
         # Testing for "else" case URL
     def test_return_url_else(self):
@@ -101,6 +130,7 @@ class TestReturnUrl(TestCase):
         expected_other_url = "https://source.unsplash.com/lVDnLUACI18"
         actual_other_url = return_url(other_codes)
         self.assertEqual(actual_other_url, expected_other_url)
+
 
 class TestFindWeather(TestCase):
 
