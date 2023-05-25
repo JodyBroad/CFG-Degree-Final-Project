@@ -110,6 +110,33 @@ class TestForms(unittest.TestCase):
         self.assertIn('Invalid integer value.', form.steps_taken.errors)
 
 
+     # CHECK OVER THIS TEST PLEASE 25.05.2023
+     def test_daily_record_submission(self):
+            with self.app:
+                # Log in a user
+                self.app.post('/home', data=dict(email='test@example.com', password='password'), follow_redirects=True)
+
+                # Test successful record submission
+                response = self.app.post('/tracking', data=dict(mood_id=1, mood_diary='Feeling good',
+                                                                sleep_duration_id=1, sleep_quality_id=1,
+                                                                water_intake=8, steps_taken=5000),
+                                         follow_redirects=True)
+                self.assertEqual(response.status_code, 200)
+                record = DailyRecord.query.filter_by(user_id=session['id_number']).first()
+                self.assertIsNotNone(record)
+                self.assertEqual(record.mood_id, 1)
+                self.assertEqual(record.mood_diary, 'Feeling good')
+
+                # Test missing record fields
+                response = self.app.post('/tracking', data=dict(mood_id='', mood_diary='',
+                                                                sleep_duration_id='', sleep_quality_id='',
+                                                                water_intake='', steps_taken=''),
+                                         follow_redirects=True)
+                self.assertEqual(response.status_code, 200)
+                self.assertIn(b'Please fill in all the required fields', response.data)
+                self.assertIsNone(DailyRecord.query.filter_by(user_id=session['id_number']).first())
+
+
 if __name__ == '__main__':
     app = Flask(__name__)
 
