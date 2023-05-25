@@ -1,6 +1,7 @@
 from extensions import db
 # Models - table structure for the db
 
+
 # UserInfo table
 class UserInfo(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
@@ -33,11 +34,13 @@ class SleepDuration(db.Model):
     # not field in table but relationship between SleepDuration and DailyRecord
     sleep_duration = db.relationship('DailyRecord', backref='sleep_duration')
 
+
 class SleepQuality(db.Model):
     sleep_quality_id = db.Column(db.Integer, primary_key=True)
     quality = db.Column(db.String(50), nullable=False)
     # not field in table but relationship between SleepQuality and DailyRecord
     sleep_quality = db.relationship('DailyRecord', backref='sleep_quality')
+
 
 class DailyRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)

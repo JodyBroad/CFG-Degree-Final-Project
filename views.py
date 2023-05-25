@@ -139,11 +139,13 @@ def user_list():
 def user_data():
     error = ""
     user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from(UserInfo)\
-        .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).order_by(DailyRecord.record_date).all()
+        .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).order_by(DailyRecord.record_date).\
+        all()
     headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
                 'Sleep Quality', 'Water intake', 'Steps taken')
     return render_template('user_data.html', user_data=user_data, headings=headings, message=error,
                            weather_img=find_weather())
+
 
 @app.route('/calendar', methods=['GET'])
 def calendar():
@@ -159,6 +161,7 @@ def calendar():
         .all()
 
     return render_template('calendar.html', user_data=user_data, users=users)
+
 
 # getting a list of logged in users daily records
 @app.route('/my_user_data', methods=['GET'])

@@ -60,4 +60,3 @@ def find_weather():
     background_url = response_code(response, response.status_code)
 
     return background_url
-

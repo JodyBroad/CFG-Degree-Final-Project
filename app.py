@@ -29,4 +29,3 @@ if __name__ == '__main__':
         # https://stackoverflow.com/questions/42909816/can-i-avoid-circular-imports-in-flask-and-sqlalchemy
         from views import *
     app.run(debug=True)
-
