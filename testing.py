@@ -45,6 +45,8 @@ class TestViews(TestCase):
     def test_not_user_list(self):
         with app.app_context():
             # would be good to get this testing something more detailed than just if it is bringing stuff back
+            # not sure this is a valid test, was just trying to get it to make sure to raise an error if invalid table
+            # name, but python picks this up before it is an issue, so not sure it is valid!
             with self.assertRaises(NameError):
                 users = UserNotInfo.query
 
