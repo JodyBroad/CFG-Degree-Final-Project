@@ -227,11 +227,12 @@ class TestFindWeather(TestCase):
         weather = find_weather()
         self.assertIsInstance(weather, str)
 
-    # not working, need to mock the output not the input
-    # @mock.patch('builtins.input', side_effect=["404"])
-    # def test_find_weather_failure(self, param):
-    #     with self.assertRaises(Exception):
-    #         find_weather()
+    # testing that Exception error is raised when request response is not 200
+    def test_find_weather_failure(self):
+        response = requests.get("https://api.open-meteo.com/v1/forecast?latitude=51.51&longitude=-0.13&forecast_days=1"
+                                "&timezone=GMT&daily=weathercode")
+        with self.assertRaises(Exception):
+            response_code(response, 404)
 
 # tests we would like
 
