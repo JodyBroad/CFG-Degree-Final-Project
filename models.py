@@ -1,7 +1,6 @@
 from extensions import db
-
-
 # Models - table structure for the db
+
 
 # UserInfo table
 class UserInfo(db.Model):
@@ -12,6 +11,14 @@ class UserInfo(db.Model):
     password = db.Column(db.String(15), nullable=False)
     # not field in table but relationship between userInfo and DailyRecord
     user_info = db.relationship('DailyRecord', backref='user_info')
+
+    def serialize(self):
+        return {
+            "userId": self.user_id,
+            "forename": self.forename,
+            "surname": self.surname,
+            "email": self.email
+        }
 
 
 class MoodStatus(db.Model):

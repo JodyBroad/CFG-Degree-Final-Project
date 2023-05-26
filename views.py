@@ -29,7 +29,7 @@ def home():
 
         # this is the refined query - will only return something if it matches both username and password
         db_username_password = UserInfo.query.filter_by(email=form_username, password=form_password).all()
-        print(db_username_password)
+        # print(db_username_password)
         for user_id in db_username_password:
             user_id_for_session_variable = user_id.user_id
 
@@ -139,8 +139,43 @@ def user_list():
 def user_data():
     error = ""
     user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from(UserInfo)\
-        .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).all()
+        .join(DailyRecord).join(MoodStatus).join(SleepDuration).join(SleepQuality).order_by(DailyRecord.record_date).\
+        all()
     headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
                 'Sleep Quality', 'Water intake', 'Steps taken')
     return render_template('user_data.html', user_data=user_data, headings=headings, message=error,
                            weather_img=find_weather())
+
+
+@app.route('/calendar', methods=['GET'])
+def calendar():
+    users = [user_info.serialize() for user_info in db.session.query(UserInfo).all()]
+
+    user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality)\
+        .select_from(UserInfo)\
+        .join(DailyRecord)\
+        .join(MoodStatus)\
+        .join(SleepDuration)\
+        .order_by(UserInfo.user_id)\
+        .order_by(DailyRecord.record_date)\
+        .all()
+
+    return render_template('calendar.html', user_data=user_data, users=users)
+
+
+# getting a list of logged in users daily records
+@app.route('/my_user_data', methods=['GET'])
+def my_user_data():
+    error = ""
+    if 'logged_in' in session:
+        user_id = session['id_number']
+        user_data = db.session.query(UserInfo, DailyRecord, MoodStatus, SleepDuration, SleepQuality).select_from\
+            (UserInfo).filter_by(user_id=user_id).join(DailyRecord).join(MoodStatus).join(SleepDuration).\
+            join(SleepQuality).order_by(DailyRecord.record_date).all()
+        headings = ('First Name', 'Last Name', 'Email', 'Date of Record', 'Mood', 'Diary', 'Sleep Duration',
+                    'Sleep Quality', 'Water intake', 'Steps taken')
+        return render_template('my_user_data.html', user_data=user_data, headings=headings, message=error,
+                               weather_img=find_weather())
+    else:
+        flash(f'Please log in to view your entries', 'danger')
+        return redirect(url_for('home'))

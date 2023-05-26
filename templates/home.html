@@ -2,27 +2,39 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
+<section class="home-section">
     <div class="heading">
-        <p>Hello, welcome to our website</p>
-        <p>Eventually this will be a marvellous self-care app</p>
+
+        <p>Hello!</p>
+        <p>Adulting is hard. We get it - everyone is too busy, and you never get any time to look after yourself.</p>
+        <p>You are basically a houseplant with complicated emotions, so we designed this site to help you keep hydrated
+            and reflect on all those feelings.</p>
+        <p>Not had time to look outside today? We got you covered - this image reflects the weather.</p>
+        <p>How are you sleeping? Keep a note of it here!</p>
+        <p>Have you made it away from your desk today? Record your steps here.</p>
+        <p>Enjoy this marvellous self-care app.</p>
+
     </div>
 
     <!--log into existing account -->
-    <div class="Login">
-      <h4>Log in to an existing account</h4>
+    <div class="login">
+      <h3>Log in to an existing account</h3>
 
         <div class='form'>
             <form method='POST' action=''>
+                <div class="login-form">
                 <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
                 {{ form.hidden_tag() }}
                 {{ form.email.label }} {{ form.email }}
                 {{ form.password.label }} {{form.password }}
                 <br>
+                </div>
                 {{ form.submit }}
             {{ message }}
             </form>
         </div>
     </div>
+</section>
 
 
 {% endblock %}

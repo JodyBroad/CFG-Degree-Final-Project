@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 {% block body_content %}
-<head>
-    <title>User List</title>
-
-<body>
-<div>
-{% for user in users %}
-   <p>{{user.id}} {{user.forename}} {{user.surname}} {{user.email}}</p>
-{% endfor %}
-    <br>
-    {{ message }}
-</div>
 
 
+<section class="user-section">
+
+        <div>
+        {% for user in users %}
+           <p>{{user.id}} {{user.forename}} {{user.surname}} {{user.email}}</p>
+        {% endfor %}
+            <br>
+            {{ message }}
+        </div>
+
+</section>
 
 
 {% endblock %}

@@ -2,6 +2,7 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
+<section class="tracking-section">
     <!--if you aren't logged in, display message to ask you to log in (add a redirect here to login page-->
     <div>
         {% if not session['logged_in'] %}
@@ -11,34 +12,43 @@
     <!-- If you are logged in, display who you are logged in as (make this a better message) -->
     {% elif session %}
     <div>
-        <H1>You are currently logged in as {{ session['logged_in_username'] }}</H1>
+        <h1>You are currently logged in as {{ session['logged_in_username'] }}</h1>
     </div>
     {% endif %}
 
     <!--tracking entry -->
-        <div class="tracking-entry">
-          <h1>Tracking</h1>
+    <div class="tracking-entry">
+      <h2>Tracking</h2>
 
-            <div class="form" id='track-form'>
-                <form method='POST' action=''>
-                    <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
-                    {{ form.hidden_tag() }}
-                    {{ form.mood_id.label }} {{ form.mood_id }}
-                    {{ form.mood_diary.label }} {{ form.mood_diary }}
-                    <br>
-                    {{ form.sleep_duration_id.label }} {{ form.sleep_duration_id }}
-                    {{ form.sleep_quality_id.label }} {{ form.sleep_quality_id }}
-                    <br>
-                    {{ form.water_intake.label }} {{ form.water_intake }}
-                    <br>
-                    {{ form.steps_taken.label }} {{ form.steps_taken }}
-
-                    {{ form.submit }}
-                {{ message }}
-                </form>
-            </div>
+        <div class="form" id='track-form'>
+            <form method='POST' action=''>
+                <!-- provides CSRF protection, alongside secret key. Use on all POST forms -->
+                {{ form.hidden_tag() }}
+                <div class="mood-selection">
+                {{ form.mood_id.label }} {{ form.mood_id }}
+                </div>
+                <div class="diary-entry">
+                {{ form.mood_diary.label }} {{ form.mood_diary }}
+                <br>
+                </div>
+                <div class="sleep-selection">
+                {{ form.sleep_duration_id.label }} {{ form.sleep_duration_id }}
+                {{ form.sleep_quality_id.label }} {{ form.sleep_quality_id }}
+                <br>
+                </div>
+                <div class="water-selection">
+                {{ form.water_intake.label }} {{ form.water_intake }}
+                <br>
+                </div>
+                <div class="steps-selection">
+                {{ form.steps_taken.label }} {{ form.steps_taken }}
+                </div>
+                {{ form.submit }}
+            {{ message }}
+            </form>
         </div>
-
+    </div>
+</section>
 
 
 
