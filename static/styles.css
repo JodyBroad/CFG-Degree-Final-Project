@@ -108,6 +108,12 @@ section {
 }
 
 /* -------------------- home -------------------- */
+
+.active-link {
+    background-color: rgba(255, 255, 255, .5);
+    padding: 1rem;
+}
+
 .home-section{
     display: flex;
     flex-direction: column;

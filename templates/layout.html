@@ -20,22 +20,28 @@
         </h1>
 
         <nav class="navbar">
-            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
-            <a class="nav-link" href="{{ url_for('calendar') }}">Calendar</a>
-            <a class="nav-link" href="{{ url_for('tracking') }}">Tracking</a>
-            <a class="nav-link" href="{{ url_for('my_user_data') }}">My Daily Records</a>
-            <a class="nav-link" href="{{ url_for('user_data') }}">All User Data</a>
-            <a class="nav-link" href="{{ url_for('user_list') }}">User List</a>
+            <a class="nav-link {{ 'active-link' if request.path == url_for('home') else '' }}" href="{{ url_for('home') }}">Home</a>
+            <a class="nav-link {{ 'active-link' if request.path == url_for('calendar') else '' }}" href="{{ url_for('calendar') }}">Calendar</a>
+            <a class="nav-link {{ 'active-link' if request.path == url_for('tracking') else '' }}" href="{{ url_for('tracking') }}">Tracking</a>
+            <a class="nav-link {{ 'active-link' if request.path == url_for('my_user_data') else '' }}" href="{{ url_for('my_user_data') }}">My Daily Records</a>
+            <a class="nav-link {{ 'active-link' if request.path == url_for('user_data') else '' }}" href="{{ url_for('user_data') }}">All User Data</a>
+            <a class="nav-link {{ 'active-link' if request.path == url_for('user_list') else '' }}" href="{{ url_for('user_list') }}">User List</a>
 
     <!--        Button to login-->
             <form class="form-inline">
+              {% if not session['logged_in'] %}
               <button class="btn" type="button"><a href="{{ url_for('home') }}">Log in</a></button>
+              {% endif %}
 
     <!--        Button to register-->
+              {% if not session['logged_in'] %}
               <button class="btn" type="button"><a href="{{ url_for('register') }}">Register</a></button>
+              {% endif %}
 
     <!--        Button to logout-->
+              {% if session['logged_in'] %}
               <button class="btn" type="button"><a href="{{ url_for('logout') }}">Logout</a></button>
+              {% endif %}
             </form>
 
         </nav>
