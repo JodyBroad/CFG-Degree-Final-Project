@@ -5,11 +5,13 @@ from flask_sqlalchemy import SQLAlchemy
 from views import *
 from weather import *
 
+
 class TestDBConnection(TestCase):
 
     # checks we have a valid instance of a SQLAlchemy database
     def test_db_connection(self):
         self.assertIsInstance(db, SQLAlchemy)
+
 
 class TestFlaskApp(TestCase):
 
