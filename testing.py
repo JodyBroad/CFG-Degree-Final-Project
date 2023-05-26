@@ -5,13 +5,11 @@ from flask_sqlalchemy import SQLAlchemy
 from views import *
 from weather import *
 
-
 class TestDBConnection(TestCase):
 
     # checks we have a valid instance of a SQLAlchemy database
     def test_db_connection(self):
         self.assertIsInstance(db, SQLAlchemy)
-
 
 class TestFlaskApp(TestCase):
 
@@ -39,6 +37,60 @@ class TestViews(TestCase):
                 order_by(DailyRecord.record_date).all()
             # would be good to get this testing something more detailed than just if it is bringing stuff back
             self.assertIsNotNone(user_data)
+    
+    def test_calendar_returns_data_for_get_request(self):
+        with app.app_context():
+            users = db.session.query(UserInfo).all()
+            self.assertIsNotNone(users)
+
+        with app.test_client() as test_client:
+            # Request the calendar page
+            response = test_client.get('/calendar')
+
+            # Check the response is successful
+            self.assertEqual(response.status_code, 200)
+
+            # Check the select dropdowns exist
+            self.assertIn(b'id="selected-user"', response.data)
+            self.assertIn(b'id="selected-metric"', response.data)
+
+            # Check each user name is in the response HTML (select drop-down option should have these)
+            for user in users:
+                self.assertIn(user.get_full_name().encode(), response.data)
+
+            # Check each metric option is in the response HTML (select drop-down option should have these)
+            for option in ['Mood', 'Sleep Quality', 'Sleep Duration', 'Water Consumption', 'Steps Taken']:
+                self.assertIn(option.encode(), response.data)
+
+            # Check that the calendar element exists
+            self.assertIn(b'id="calendar"', response.data)
+            
+            # Check that the navbar has all the correct links
+            self.assert_navbar_contains_links(response.data)
+
+    def test_calendar_returns_405_for_post_post(self):
+        with app.test_client() as test_client:
+            response = test_client.post('/calendar')
+            self.assertEqual(response.status_code, 405)
+
+    def test_not_found(self):
+        with app.test_client() as test_client:
+            response = test_client.get('/not-existent-route')
+            self.assertEqual(response.status_code, 404)
+            self.assertIn(b'Not Found', response.data)
+
+    def assert_navbar_contains_links(self, response_data):
+        links = [
+            '<a class="nav-link" href="/">Home</a>',
+            '<a class="nav-link" href="/calendar">Calendar</a>',
+            '<a class="nav-link" href="/tracking">Tracking</a>',
+            '<a class="nav-link" href="/my_user_data">My Daily Records</a>',
+            '<a class="nav-link" href="/user_data">All User Data</a>',
+            '<a class="nav-link" href="/user_list">User List</a>',
+        ]
+
+        for link in links:
+            self.assertIn(link.encode(), response_data)
 
     # test a query that should fail and make sure it raises an error if table name doesn't exist
     # def test_not_user_list(self):

@@ -20,6 +20,9 @@ class UserInfo(db.Model):
             "email": self.email
         }
 
+    def get_full_name(self):
+        return self.forename + " " + self.surname
+
 
 class MoodStatus(db.Model):
     mood_id = db.Column(db.Integer, primary_key=True)
