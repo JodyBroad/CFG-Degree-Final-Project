@@ -107,8 +107,14 @@ section {
     background-color: black;
 }
 
+
 /* -------------------- home -------------------- */
-.home-section {
+.active-link {
+    background-color: rgba(255, 255, 255, .5);
+    padding: 1rem;
+}
+
+.home-section{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -228,8 +234,8 @@ section {
 }
 
 
-/* -------------------- user_data -------------------- */
-.data-section {
+/* -------------------- user_data / my_user_data -------------------- */
+.data-section, .my-data-section{
     /* background: linear-gradient(Salmon, PapayaWhip); */
     background-color: lightskyblue;
     display: flex;
@@ -239,41 +245,49 @@ section {
     padding: 30px;
 }
 
-.user-data-table {
+.user-data-table, .my-user-data-table{
     width: 100%;
     text-align: left;
     border-collapse: collapse;
 }
 
-.user-data-heading, .user-data-cell {
+.user-table-heading, .user-data-cell, .my-user-table-heading{
     height: 40px;
     padding: 15px;
     border-bottom: 1px solid #ddd;
 }
 
-.user-data-heading[scope=col] {
+.user-data-heading[scope=col], .my-user-data-heading[scope=col] {
   background-color: #04AA6D;
   color: white;
+  padding: 20px;
 }
 
-.user-data-row:hover {
+.user-data-row:hover, .my-user-data-row:hover {
     background-color: coral !important;
 }
 
-.user-data-row:nth-child(even) {
+.user-data-row:nth-child(even), .my-user-data-row:nth-child(even) {
     background-color: #f2f2f2;
 }
+
 
 /* -------------------- user_list -------------------- */
 .user-section {
     /* background: linear-gradient(Plum, lavender); */
     background-color: #1B9AAA;
     display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    justify-content: space-evenly;
+}
+
+.user-list {
+    display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
     align-items: center;
-    text-align: center;
-    color: white;
 }
 
 .user-card:hover {
@@ -285,13 +299,18 @@ section {
     max-width: 100px;
 }
 
+.user-section h2{
+    text-align: center;
+}
+
+
 /* -------------------- calendar -------------------- */
 .emoji {
     transform: scale(3);
 }
 
 #calendar {
-    padding: 0 1em;
+    padding: 80px;
 }
 
 .fc-event-title {

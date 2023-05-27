@@ -3,7 +3,7 @@
 
 <section class="data-section">
     <div class="user-data">
-        <h2 id="user_data_heading">User data</h2>
+        <h2 id="user_data_heading">All User Data</h2>
 
         <div class="container-fluid bg-1 text-center">
             <div class="table-responsive table-striped">
@@ -19,7 +19,7 @@
                     <tbody>
                         {% for user, record, mood, sleep_duration, sleep_quality in user_data %}
                         <tr class="user-data-row">
-                            <th class="user-data-heading" scope="row">{{user.forename}}</th>
+                            <th class="user-table-heading" scope="row">{{user.forename}}</th>
                               <td class="user-data-cell">{{ user.surname }} </td>
                               <td class="user-data-cell">{{ user.email }}</td>
                               <td class="user-data-cell">{{ record.record_date }}</td>
