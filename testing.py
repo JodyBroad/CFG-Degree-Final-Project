@@ -1,6 +1,6 @@
 from app import db, app
 from flask import Flask
-from unittest import TestCase, main
+from unittest import TestCase
 from flask_sqlalchemy import SQLAlchemy
 from views import *
 from weather import *
@@ -296,6 +296,3 @@ class TestFindWeather(TestCase):
 
 # test calendar()
 # test session_variables()
-
-if __name__ == "__main__":
-    main()
