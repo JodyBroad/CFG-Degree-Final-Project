@@ -257,6 +257,10 @@ section {
     color: white;
 }
 
+.user-section h2{
+    text-align: center;
+}
+
 
 /* -------------------- calendar -------------------- */
 .emoji {
@@ -264,7 +268,7 @@ section {
 }
 
 #calendar {
-    padding: 0 1em;
+    padding: 80px;
 }
 
 .fc-event-title {
