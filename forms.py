@@ -16,9 +16,9 @@ class BasicRegistrationForm(FlaskForm):
 
 
 class LogInForm(FlaskForm):
-    email = EmailField('Email', validators=[DataRequired(), Email(message="Please supply a valid email")])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Log In to Existing Account')
+    email = EmailField(name='email', validators=[DataRequired(), Email(message="Please supply a valid email")], render_kw={"placeholder":"Email"})
+    password = PasswordField(name='password', validators=[DataRequired()], render_kw={"placeholder":"Password"})
+    submit = SubmitField('Log In')
 
 
 class TrackingForm(FlaskForm):
