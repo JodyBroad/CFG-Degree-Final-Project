@@ -2,41 +2,57 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedUserControl = document.getElementById('selected-user');
     const selectedMetricControl = document.getElementById('selected-metric');
 
-    const today = new Date().setHours(0);
-
     const emojiMap = {
         "": "😶",
-        "Happy": "😁",
+        "Happy": "😀",
         "Sad": "😢",
-        "Angry": "😠",
-        "Sleepy": "😪",
+        "Angry": "🤬",
+        "Sleepy": "😴",
+        "Sick": "🤒",
+        "Anxious": "😟",
     };
+
+    const getWaterImage = (waterConsumption) => {
+        if (waterConsumption < 1000) {
+            return '/static/images/water/1.png';
+        } else if (waterConsumption >= 1000 && waterConsumption <= 2000) {
+            return '/static/images/water/2.png';
+        } else {
+            return '/static/images/water/3.png'
+        }
+    }
 
     const buildMoodEvent = (data, baseEvent) => ({
         ...baseEvent,
         title: emojiMap[data.mood],
         classNames: ['emoji'],
+        type: 'Mood',
     });
 
     const buildSleepDurationEvent = (data, baseEvent) => ({
         ...baseEvent,
         title: `${data.sleepDuration}`,
+        type: 'Sleep Duration',
     });
 
     const buildSleepQualityEvent = (data, baseEvent) => ({
         ...baseEvent,
         title: `${data.sleepQuality}`,
+        type: 'Sleep Quality',
     });
 
     const buildStepsTakenEvent = (data, baseEvent) => ({
         ...baseEvent,
         title: `${data.steps} Steps`,
+        type: 'Steps Taken',
     });
 
     const buildWaterEvent = (data, baseEvent) => ({
         ...baseEvent,
         title: `${data.water}ml`,
-        classNames: ['fc-day-future', 'fc-day-other']
+        classNames: ['fc-day-future', 'fc-day-other'],
+        imageUrl: getWaterImage(data.water),
+        type: 'Water Consumption',
     });
 
     const getEventsForUser = () => {
@@ -74,23 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
             current.start = current.start.setHours(0);
 
             if (!accumulator.find((item) => item.start == current.start)) {
-              accumulator.push(current);
+                accumulator.push(current);
             }
 
             return accumulator;
-          }, []);
+        }, []);
 
         return uniqueEvents;
-    };
-
-    const onDateClick = (event) => {
-        if (event.date > today) {
-            // Ignore future dates
-            return;
-        }
-
-        // Navigate to the tracking page with the date as a query string
-        window.location = `/tracking?date=${event.date.toLocaleDateString()}`;
     };
 
     const calendarEl = document.getElementById('calendar');
@@ -101,8 +107,24 @@ document.addEventListener('DOMContentLoaded', () => {
         fixedWeekCount: false,
         firstDay: 1,
         events: getEventsForUser(),
-        dateClick: onDateClick,
         dayCellClassNames: ({ isFuture }) => isFuture ? ['fc-day-other'] : [],
+        eventContent: (arg) => {
+            switch (arg.event.extendedProps.type) {
+                case 'Water Consumption':
+                    return {
+                        html: `
+                        <div class="water-consumption-cell">
+                            <img src="${arg.event.extendedProps.imageUrl}" />
+                            <p>${arg.event.title}</p>
+                        </div>
+                        `
+                    }
+                default:
+                    return {
+                        html: `<div class="fc-event-title">${arg.event.title}</div>`
+                    };
+            }
+        }
     });
 
     const resetCalendarEvents = (event) => {
