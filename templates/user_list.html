@@ -1,18 +1,19 @@
 {% extends "layout.html" %}
 {% block body_content %}
 
-
 <section class="user-section">
-        <h2>List of Users</h2>
-
-        <div>
+    <h2>List of Users</h2>
+    <div class="user-list">
         {% for user in users %}
-           <p>{{user.id}} {{user.forename}} {{user.surname}} {{user.email}}</p>
-        {% endfor %}
-            <br>
-            {{ message }}
+        <div class="user-card">
+            <img class="avatar" src="/static/images/user.png">
+            <p>{{user.get_full_name()}}</p>
+            <a href="mailto:{{user.email}}">{{user.email}}</a>
         </div>
-
+        {% endfor %}
+    </div>
+    <br>
+    {{ message }}
 </section>
 
 

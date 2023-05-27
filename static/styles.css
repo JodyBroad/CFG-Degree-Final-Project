@@ -116,52 +116,79 @@ section {
 
 .home-section{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     color: white;
+    text-shadow: 1px 1px black;
 }
 
-.heading p{
-    font-size: 30px;
+.intro-text {
+    max-width: 50%;
+    font-size: 1.6rem;
+    line-height: 2.65rem;
+    background-color: rgba(0, 0, 0, .25);
+    padding: 1rem;
 }
 
-.heading{
+@media only screen and (max-width: 915px) {
+    .home-section {
+        flex-direction: column-reverse;
+        align-items: space-between;
+    }
+
+    .intro-text {
+        line-height: 1.2rem;
+        font-size: 1.2rem;
+        max-width: 100%;
+    }
+  }
+
+.form-heading {
+    font-size: 1.5rem;
     text-align: center;
-    padding-bottom: 40px;
+    margin: 1rem 0 0 0;
 }
 
-.login h3{
-    text-align: center;
-}
-
-.login form{
-    align-items: center;
+.login {
     padding: 10px;
+    border: 2px solid white;
+    border-radius: 10%;
 }
 
-.login-form #email, .login-form #password{
-    width: 200px;
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
+.login-form input[type=submit] {
+    margin: 10px 0px;
+}
 
 /* -------------------- register -------------------- */
-.register-section{
+.register-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
 }
 
-.register h3{
-    text-align: center;
+.register-intro {
+    font-size: 1.5rem;
 }
 
-.register form{
+.register h3 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.register form {
     align-items: center;
     padding: 10px;
 }
 
-.register-form{
+.register-form {
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -169,7 +196,7 @@ section {
 
 
 /* -------------------- logout -------------------- */
-.logout-section{
+.logout-section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -179,7 +206,7 @@ section {
 
 
 /* -------------------- tracking -------------------- */
-.tracking-section{
+.tracking-section {
     /* background: linear-gradient(navy, lightblue); */
     background-color: #048BA8;
     display: flex;
@@ -187,22 +214,22 @@ section {
     color: white;
 }
 
-.tracking-entry{
+.tracking-entry {
     padding: 10px;
 }
 
-.mood-selection ul{
+.mood-selection ul {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
     font-size: 1.5em;
 }
 
-.mood-selection li{
+.mood-selection li {
     display: inline;
 }
 
-#mood_diary{
+#mood_diary {
     width: 500px;
 }
 
@@ -245,15 +272,30 @@ section {
 
 
 /* -------------------- user_list -------------------- */
-.user-section{
+.user-section {
     /* background: linear-gradient(Plum, lavender); */
     background-color: #1B9AAA;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     color: white;
+    justify-content: space-evenly;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.user-card:hover {
+    cursor: pointer;
+}
+
+.avatar {
+    border-radius: 50%;
+    max-width: 100px;
 }
 
 .user-section h2{
