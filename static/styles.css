@@ -230,10 +230,9 @@ section {
     border-bottom: 1px solid #ddd;
 }
 
-.user-data-heading[scope=col], .my-user-data-heading[scope=col] {
+.user-table-heading[scope=col], .my-user-table-heading[scope=col] {
   background-color: #04AA6D;
   color: white;
-  padding: 20px;
 }
 
 .user-data-row:hover, .my-user-data-row:hover {
