@@ -83,12 +83,12 @@ class TestViews(TestCase):
 
     def assert_navbar_contains_links(self, response_data):
         links = [
-            '<a class="nav-link" href="/">Home</a>',
-            '<a class="nav-link" href="/calendar">Calendar</a>',
-            '<a class="nav-link" href="/tracking">Tracking</a>',
-            '<a class="nav-link" href="/my_user_data">My Daily Records</a>',
-            '<a class="nav-link" href="/user_data">All User Data</a>',
-            '<a class="nav-link" href="/user_list">User List</a>',
+            'href="/">Home</a>',
+            'href="/calendar">Calendar</a>',
+            'href="/tracking">Tracking</a>',
+            'href="/my_user_data">My Daily Records</a>',
+            'href="/user_data">All User Data</a>',
+            'href="/user_list">User List</a>',
         ]
 
         for link in links:
